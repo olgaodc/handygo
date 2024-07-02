@@ -1,0 +1,39 @@
+.section {
+  .searchBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    .input {
+      color: #0e0e10;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #dee1e2;
+      border-radius: 30px;
+      height: 60px;
+      width: 300px;
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: #ccc;
+      }
+
+      &:focus-visible {
+        outline-color: #8056eb;
+      }
+    }
+
+    .searchButton {
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 19px;
+
+      img {
+        height: 22px;
+      }
+    }
+  }
+}
