@@ -8,4 +8,4 @@ const categorySchema = mongoose.Schema({
     creationDate: {type: Date, required: true},
 });
 
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model('Category', categorySchema);

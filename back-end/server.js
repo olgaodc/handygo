@@ -4,16 +4,16 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const categoryRouter = require('./api/routes/category');
-//TO DO: const businessRouter = require('./api/routes/category');
-//TO DO: const bookingRouter = require('./api/routes/category');
+const businessRouter = require('./api/routes/business');
+//TO DO: const bookingRouter = require('./api/routes/booking');
 
 
 server.use(express.json());
 server.use(cors());
 
 server.use(categoryRouter);
-//TO DO: app.use(businessRouter);
-//TO DO: app.use(bookingRouter);
+server.use(businessRouter);
+//TO DO: server.use(bookingRouter);
 
 mongoose.connect(process.env.MONGO_CONNECT)
   .then(console.log('Connected to MongoDB'))
