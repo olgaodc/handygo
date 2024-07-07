@@ -10,7 +10,7 @@ const businessSchema = mongoose.Schema({
     email: {type: String, required: true, min: 5},
     images: [{
         url: { type: String, required: true },
-        alt: { type: String, required: false }, // ar reikia?????
+        alt: { type: String, required: false },
       }],
     creationDate: {type: Date, required: true},
 });

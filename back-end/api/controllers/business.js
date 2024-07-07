@@ -42,6 +42,8 @@ module.exports.GET_BUSINESSES_BY_CATEGORY = async (req, res) => {
 
 module.exports.ADD_BUSINESS = async (req, res) => {
   try {
+    // const { businessName, description, address, category, person, email } = req.body;
+
     const checkedImages = Array.isArray(req.body.images) ? req.body.images.filter(image => image.url && typeof image.url === 'string') : [];
     if (checkedImages.length === 0) {
       return res.status(400).json({ response: 'Images array cannot be empty' });
@@ -54,12 +56,12 @@ module.exports.ADD_BUSINESS = async (req, res) => {
 
     const business = new BusinessModel({
       id: uuidv4(),
-      businessName: req.body.businessName,
-      description: req.body.description,
-      address: req.body.address,
-      category: req.body.category,
-      person: req.body.person,
-      email: req.body.email,
+      businessName,
+      description,
+      address,
+      category,
+      person,
+      email,
       images: checkedImages,
       creationDate: new Date(),
     });

@@ -14,12 +14,14 @@ module.exports.GET_CATEGORIES = async (req, res) => {
 
 module.exports.ADD_CATEGORY = async (req, res) => {
   try {
-    const updatedImageUrl = req.body.imageUrl.replace(/color=[0-9a-f]{6}/i, `color=${req.body.bgColor}`);
+    const { serviceName, imageUrl, bgColor } = req.body;
+
+    const updatedImageUrl = imageUrl.replace(/color=[0-9a-f]{6}/i, `color=${bgColor}`);
     const category = new CategoryModel({
       id: uuidv4(),
-      serviceName: req.body.serviceName,
+      serviceName,
       imageUrl: updatedImageUrl,
-      bgColor: req.body.bgColor,
+      bgColor,
       creationDate: new Date(),
     });
 
