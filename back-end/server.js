@@ -6,6 +6,7 @@ require('dotenv').config();
 const categoryRouter = require('./api/routes/category');
 const businessRouter = require('./api/routes/business');
 const bookingRouter = require('./api/routes/booking');
+const userRouter = require('./api/routes/user');
 
 
 server.use(express.json());
@@ -14,6 +15,7 @@ server.use(cors());
 server.use(categoryRouter);
 server.use(businessRouter);
 server.use(bookingRouter);
+server.use(userRouter);
 
 mongoose.connect(process.env.MONGO_CONNECT)
   .then(console.log('Connected to MongoDB'))
