@@ -4,13 +4,11 @@ const CategoryModel = require('../models/category');
 module.exports.GET_CATEGORIES = async (req, res) => {
   try {
     const categories = await CategoryModel.find();
-    return res.status(200).json({ categories: categories })
+    return res.status(200).json({ categories });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-
-}
+};
 
 module.exports.ADD_CATEGORY = async (req, res) => {
   try {
@@ -27,9 +25,7 @@ module.exports.ADD_CATEGORY = async (req, res) => {
 
     const addedCategory = await category.save();
     return res.status(200).json({ response: 'Category added successfully', category: addedCategory });
-
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-}
+};

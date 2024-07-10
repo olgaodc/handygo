@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 const expiresIn = process.env.JWT_EXPIRATION;
 

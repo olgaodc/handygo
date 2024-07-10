@@ -1,11 +1,12 @@
 const express = require('express');
+
 const router = express.Router();
 const {
-    GET_BUSINESSES,
-    GET_BUSINESS,
-    GET_BUSINESSES_BY_CATEGORY,
-    ADD_BUSINESS,
-    UPDATE_BUSINESS,
+  GET_BUSINESSES,
+  GET_BUSINESS,
+  GET_BUSINESSES_BY_CATEGORY,
+  ADD_BUSINESS,
+  UPDATE_BUSINESS,
 } = require('../controllers/business');
 
 router.get('/businesses', GET_BUSINESSES);

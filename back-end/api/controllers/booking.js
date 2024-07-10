@@ -7,33 +7,36 @@ module.exports.GET_USER_BOOKINGS = async (req, res) => {
 
     if (!bookings) {
       return res.status(404).json({ response: 'Bookings not found' });
-    };
+    }
 
-    return res.status(200).json({ bookings: bookings })
+    return res.status(200).json({ bookings });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-}
+};
 
 module.exports.GET_BUSINESS_BOOKINGS_BY_DATE = async (req, res) => {
   try {
-    const filteredBookings = await BookingModel.find({businessId: req.params.businessId, date: req.params.date});
+    const filteredBookings = await BookingModel.find({
+      businessId: req.params.businessId,
+      date: req.params.date,
+    });
 
     if (!filteredBookings) {
       return res.status(404).json({ response: 'Bookings not found' });
-    };
+    }
 
-    return res.status(200).json({ bookings: filteredBookings })
+    return res.status(200).json({ bookings: filteredBookings });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-}
+};
 
 module.exports.ADD_BOOKING = async (req, res) => {
   try {
-    const {businessId, date, time, userEmail, userName, status} = req.body;
+    const {
+      businessId, date, time, userEmail, userName, status,
+    } = req.body;
     const booking = new BookingModel({
       id: uuidv4(),
       businessId,
@@ -51,25 +54,21 @@ module.exports.ADD_BOOKING = async (req, res) => {
 
     const newBooking = await booking.save();
     return res.status(200).json({ booking: newBooking });
-    
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-}
+};
 
-
-module.exports.DELETE_BOOKING = async (req, res) => { 
+module.exports.DELETE_BOOKING = async (req, res) => {
   try {
-    const booking = await BookingModel.findOneAndDelete({id: req.params.id});
+    const booking = await BookingModel.findOneAndDelete({ id: req.params.id });
 
-    if(!booking) {
-      return res.status(404).json({response: 'Booking not found'});
+    if (!booking) {
+      return res.status(404).json({ response: 'Booking not found' });
     }
 
-    return res.status(200).json({response: 'Booking deleted successfully', booking: booking })
+    return res.status(200).json({ response: 'Booking deleted successfully', booking });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-}
+};

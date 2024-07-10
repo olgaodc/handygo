@@ -11,18 +11,25 @@ const userSchema = new mongoose.Schema(
   {
     timestamps: true,
     versionKey: false,
-  }
+  },
 );
 
-userSchema.pre('save', async function (next) {
+userSchema.pre('save', async function hashPassword(next) {
   if (this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 10);
   }
   next();
 });
 
-userSchema.methods.isCorrectPassword = function (password) {
+userSchema.methods.isCorrectPassword = function isCorrectPassword(password) {
   return bcrypt.compare(password, this.password);
 };
+
+userSchema.set('toJSON', {
+  transform: (doc, { _id, ...props }) => ({
+    id: _id,
+    ...props,
+  }),
+});
 
 module.exports = mongoose.model('User', userSchema);

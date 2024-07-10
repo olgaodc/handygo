@@ -1,15 +1,14 @@
 const UserModel = require('../models/user');
-const { generateToken } = require('../utils/password');
+const { generateToken } = require('../utils/generate-token');
 
 module.exports.GET_USERS = async (req, res) => {
   try {
     const users = await UserModel.find();
-    return res.status(200).json({ users: users })
+    return res.status(200).json({ users });
   } catch (err) {
-    console.log(err);
-    return res.status(500).json({ response: 'Error, please try later' });
+    return res.status(500).json({ response: 'Error, please try later', err });
   }
-}
+};
 
 module.exports.REGISTER = async (req, res) => {
   try {
@@ -24,7 +23,7 @@ module.exports.REGISTER = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ response: 'Error registering new user.', error: error.message });
   }
-}
+};
 
 module.exports.LOGIN = async (req, res) => {
   const { email, password } = req.body;
@@ -34,4 +33,4 @@ module.exports.LOGIN = async (req, res) => {
   }
   const token = generateToken({ id: user._id });
   return res.status(200).json({ token, user });
-}
+};

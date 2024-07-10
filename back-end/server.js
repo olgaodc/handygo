@@ -1,13 +1,14 @@
+/* eslint-disable no-console */
 const express = require('express');
+
 const server = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
-require('dotenv').config();
 const categoryRouter = require('./api/routes/category');
 const businessRouter = require('./api/routes/business');
 const bookingRouter = require('./api/routes/booking');
 const userRouter = require('./api/routes/user');
-
+require('dotenv').config();
 
 server.use(express.json());
 server.use(cors());
@@ -24,5 +25,5 @@ mongoose.connect(process.env.MONGO_CONNECT)
   });
 
 server.listen(process.env.PORT, () => {
-  console.log('Server works!!!')
+  console.log('Server works!!!');
 });
