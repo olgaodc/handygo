@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import ServiceCard from '../service-card/service-card';
 import { v4 as uuidv4 } from 'uuid';
 import servicesData from '../../data/services-data';
 import styles from './styles.module.scss';
 import Container from '../container/container';
+import { useState } from 'react';
 
 const ServicesSection = () => {
   const [services, setServices] = useState(servicesData);

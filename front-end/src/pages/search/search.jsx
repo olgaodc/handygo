@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import Navbar from '../../components/navbar/navbar';
 import Container from '../../components/container/container';

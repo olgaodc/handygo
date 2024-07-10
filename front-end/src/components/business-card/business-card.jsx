@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import PrimaryButton from '../primary-button/primary-button';
 import useLikeCard from '../../hooks/use-like-card';

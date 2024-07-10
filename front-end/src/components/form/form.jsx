@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import Container from '../container/container';
 import { Link, useNavigate } from 'react-router-dom';

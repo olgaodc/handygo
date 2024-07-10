@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 import { Link, useParams } from 'react-router-dom';
 import { routes } from '../navigation/router';

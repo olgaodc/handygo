@@ -48,6 +48,7 @@ module.exports.ADD_BOOKING = async (req, res) => {
       creationDate: new Date(),
     });
 
+    // TODO: Validation
     // if (!booking.length) {
     //   return res.status(400).json({response: 'Booking validation failed'})
     // }

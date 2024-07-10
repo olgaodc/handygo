@@ -1,4 +1,3 @@
-import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomePage from '../../pages/home/home';
 import ServicesPage from '../../pages/services/services';
@@ -45,10 +44,11 @@ const router = createBrowserRouter([
     path: routes.SEARCH_CATEGORY.path,
     element: <SearchPage />,
   },
-  // {
+  //TO DO: 
+  //{
   //   path: routes.ERROR,
   //   element: <ErrorPage />,
-  // },
+  //},
 ]);
 
 export const Routes = () => {

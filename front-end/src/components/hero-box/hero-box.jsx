@@ -1,4 +1,3 @@
-import React from 'react';
 import Container from '../container/container';
 import styles from './styles.module.scss';
 

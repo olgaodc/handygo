@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
 import Container from '../container/container';
 import styles from './styles.module.scss';
 
 import SearchIcon from '../../assets/search-icon.png';
 import PrimaryButton from '../primary-button/primary-button';
+import { useState } from 'react';
 
 
 
@@ -12,7 +12,8 @@ const SearchSection = () => {
 
   const handleClick = (e) => {
     setInputText(e.target.value);
-    // console.log(inputText);
+    //TO DO: Add functionality
+    //console.log(inputText);
   }
 
   return (
