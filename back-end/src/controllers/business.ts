@@ -1,8 +1,9 @@
-const { v4: uuidv4 } = require('uuid');
-const BusinessModel = require('../models/business');
-const CategoryModel = require('../models/category');
+import { Request, Response } from 'express';
+import { v4 as uuidv4 } from 'uuid';
+import BusinessModel from '../models/business';
+import CategoryModel from '../models/category';
 
-module.exports.GET_BUSINESSES = async (req, res) => {
+export const GET_BUSINESSES = async (req: Request, res: Response) => {
   try {
     const businesses = await BusinessModel.find();
     return res.status(200).json({ businesses });
@@ -11,7 +12,7 @@ module.exports.GET_BUSINESSES = async (req, res) => {
   }
 };
 
-module.exports.GET_BUSINESS = async (req, res) => {
+export const GET_BUSINESS = async (req: Request, res: Response) => {
   try {
     const business = await BusinessModel.findOne({ id: req.params.id });
     if (!business) {
@@ -23,9 +24,10 @@ module.exports.GET_BUSINESS = async (req, res) => {
   }
 };
 
-module.exports.GET_BUSINESSES_BY_CATEGORY = async (req, res) => {
+export const GET_BUSINESSES_BY_CATEGORY = async (req: Request, res: Response) => {
   try {
     const businesses = await BusinessModel.find({ category: req.params.category });
+
     if (!businesses.length) {
       return res.status(404).json({ response: 'No businesses found for this category' });
     }
@@ -36,11 +38,16 @@ module.exports.GET_BUSINESSES_BY_CATEGORY = async (req, res) => {
   }
 };
 
-module.exports.ADD_BUSINESS = async (req, res) => {
+export const ADD_BUSINESS = async (req: Request, res: Response) => {
   try {
     const {
       businessName, description, address, category, person, email, images,
     } = req.body;
+
+    if (!businessName || !description || !address
+      || !category || !person || !email || !images) {
+      return res.status(400).json({ response: 'Invalid input, all fields are required' });
+    }
 
     const checkedImages = Array.isArray(images) ? images.filter((image) => image.url && typeof image.url === 'string') : [];
     if (checkedImages.length === 0) {
@@ -52,7 +59,7 @@ module.exports.ADD_BUSINESS = async (req, res) => {
       return res.status(404).json({ message: 'Category does not exist.' });
     }
 
-    const business = new BusinessModel({
+    const newBusiness = new BusinessModel({
       id: uuidv4(),
       businessName,
       description,
@@ -64,14 +71,14 @@ module.exports.ADD_BUSINESS = async (req, res) => {
       creationDate: new Date(),
     });
 
-    const addedBusiness = await business.save();
-    return res.status(200).json({ response: 'Business added successfully', business: addedBusiness });
+    await newBusiness.save();
+    return res.status(200).json({ response: 'Business added successfully', business: newBusiness });
   } catch (err) {
     return res.status(500).json({ response: 'Error, please try later', err });
   }
 };
 
-module.exports.UPDATE_BUSINESS = async (req, res) => {
+export const UPDATE_BUSINESS = async (req: Request, res: Response) => {
   try {
     const business = await BusinessModel.findOne({ id: req.params.id });
 
