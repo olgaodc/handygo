@@ -1,14 +1,25 @@
+import React, { FC } from 'react';
+import clsx from 'clsx';
 import styles from './styles.module.scss';
 
-const PrimaryButton = ({buttonName, onClick, children, className}) => {
-  return (
-    <button 
-      className={`${styles.button} ${className || ''}`}
-      onClick={onClick}
-    >
-      {buttonName || children}
-    </button>
-  )
+interface PrimaryButtonProps {
+  children: React.ReactNode,
+  onClick: React.MouseEventHandler<HTMLButtonElement>,
+  variant: 'primary' | 'searchButton',
 }
 
-export default PrimaryButton
+const PrimaryButton: FC<PrimaryButtonProps> = ({
+  onClick, children, variant = 'primary',
+}) => {
+  return (
+    <button
+      type='button'
+      className={clsx(styles.button, styles[variant])}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default PrimaryButton;

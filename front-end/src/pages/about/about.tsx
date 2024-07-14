@@ -1,5 +1,5 @@
-import Container from '../../components/container/container'
-import Navbar from '../../components/navbar/navbar'
+import Container from '@components/container/container';
+import Navbar from '@components/navbar/navbar';
 
 const AboutPage = () => {
   return (
@@ -9,7 +9,7 @@ const AboutPage = () => {
         <div>AboutPage</div>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

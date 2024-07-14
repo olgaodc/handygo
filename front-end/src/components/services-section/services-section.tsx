@@ -1,9 +1,9 @@
-import ServiceCard from '../service-card/service-card';
 import { v4 as uuidv4 } from 'uuid';
-import servicesData from '../../data/services-data';
-import styles from './styles.module.scss';
-import Container from '../container/container';
 import { useState } from 'react';
+import ServiceCard from '../service-card/service-card';
+import servicesData from '../../data/services-data';
+import Container from '../container/container';
+import styles from './styles.module.scss';
 
 const ServicesSection = () => {
   const [services, setServices] = useState(servicesData);
@@ -12,17 +12,17 @@ const ServicesSection = () => {
     <section className={styles.servicesSectionWrapper}>
       <Container>
         <div className={styles.servicesSection}>
-          {services.length > 0 ? services.map(service =>
+          {services.length > 0 ? services.map((service) => (
             <ServiceCard
               key={uuidv4()}
               src={service.imageUrl}
               serviceName={service.serviceName}
             />
-          ) : null}
+          )) : null}
         </div>
       </Container>
     </section>
-  )
-}
+  );
+};
 
-export default ServicesSection
+export default ServicesSection;

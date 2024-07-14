@@ -55,6 +55,6 @@ const businessesData = [
     personName: 'Liam Anderson',
     address: '404 Cedar St, Miami',
   },
-]
+];
 
 export default businessesData;

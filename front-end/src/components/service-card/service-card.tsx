@@ -1,30 +1,37 @@
-import styles from './styles.module.scss';
 import { Link, useParams } from 'react-router-dom';
-import { routes } from '../navigation/router';
 import clsx from 'clsx';
+import routes from '@navigation/routes';
+import { FC } from 'react';
+import styles from './styles.module.scss';
 
-const ServiceCard = ({ src, serviceName, cardType}) => {
+interface ServiceCardProps {
+  src: string,
+  serviceName: string,
+  variant?: 'wide' | '' // ????????????????????????
+}
+
+const ServiceCard: FC<ServiceCardProps> = ({ src, serviceName, variant = '' }) => {
   const path = routes.SEARCH_CATEGORY.url(serviceName);
   const { category } = useParams();
   const isActive = category === serviceName;
 
   return (
-    <Link 
+    <Link
       className={clsx(
-        styles.card, 
-        styles[cardType], 
+        styles.card,
+        variant && styles[variant],
         isActive && styles.active,
       )}
       to={path}
     >
-      <img 
-        className={styles.image} 
-        src={src} 
-        alt={`${serviceName} icon`} 
+      <img
+        className={styles.image}
+        src={src}
+        alt={`${serviceName} icon`}
       />
       <p className={styles.text}>{serviceName}</p>
     </Link>
-  )
-}
+  );
+};
 
-export default ServiceCard
+export default ServiceCard;

@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { useParams } from 'react-router-dom';
 import styles from './styles.module.scss';
 import BusinessCard from '../business-card/business-card';
-import { v4 as uuidv4 } from 'uuid';
 import businessesData from '../../data/businesses-data';
-import { useParams } from 'react-router-dom';
 
-const BusinessesSection = ({ shouldFilter }) => {
+interface BusinessSectionProps {
+  shouldFilter?: boolean, // ????????????????????????
+}
+
+const BusinessesSection: FC<BusinessSectionProps> = ({ shouldFilter = false }) => {
   const [businesses, setBusinesses] = useState(businessesData);
   const { category: activeCategory } = useParams();
 
   useEffect(() => {
-    if (shouldFilter) {
-      const filteredBusinesses = businessesData.filter(business => business.category.toLowerCase() === activeCategory.toLowerCase());
+    if (shouldFilter && activeCategory) {
+      const filteredBusinesses = businessesData.filter((business) => business.category.toLowerCase()
+      === activeCategory.toLowerCase());
       setBusinesses(filteredBusinesses);
     } else {
       setBusinesses(businessesData);
@@ -20,7 +25,7 @@ const BusinessesSection = ({ shouldFilter }) => {
 
   return (
     <div className={styles.section}>
-      {businesses.length > 0 ? businesses.map(business =>
+      {businesses.length > 0 ? businesses.map((business) => (
         <BusinessCard
           key={uuidv4()}
           id={business.id}
@@ -31,9 +36,9 @@ const BusinessesSection = ({ shouldFilter }) => {
           personName={business.personName}
           address={business.address}
         />
-      ) : <p>No data</p>}
+      )) : <p>No data</p>}
     </div>
-  )
-}
+  );
+};
 
-export default BusinessesSection
+export default BusinessesSection;

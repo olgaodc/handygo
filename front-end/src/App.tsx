@@ -1,10 +1,9 @@
-import { Routes } from "./components/navigation/router";
-function App() {
+import Routes from '@navigation/router';
 
+const App = () => {
   return (
     <Routes />
-  )
-}
+  );
+};
 
-export default App
-
+export default App;

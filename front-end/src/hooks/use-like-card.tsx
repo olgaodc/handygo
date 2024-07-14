@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { LocalStorageService } from '../services/local-storage-service';
 
-const CARDS_IDS = 'likedCards'
+const CARDS_IDS = 'likedCards';
 
 const useLikeCard = () => {
   const [likedCardsIds, setLikedCardsIds] = useState([]);
@@ -11,14 +11,14 @@ const useLikeCard = () => {
     const newIds = createNewCards(ids);
     setLikedCardsIds(newIds);
     LocalStorageService.set(CARDS_IDS, newIds);
-  }
-  
+  };
+
   const addLikedCard = (cardId) => {
-    changeCards(ids => [...ids, cardId]);
+    changeCards((ids) => [...ids, cardId]);
   };
 
   const removeLikedCard = (cardId) => {
-    changeCards(ids => ids.filter(id => id !== cardId));
+    changeCards((ids) => ids.filter((id) => id !== cardId));
   };
 
   const isCardLiked = (cardId) => {
@@ -35,5 +35,3 @@ const useLikeCard = () => {
 };
 
 export default useLikeCard;
-
-

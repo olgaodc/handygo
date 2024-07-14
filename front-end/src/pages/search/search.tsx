@@ -1,10 +1,9 @@
-import styles from './styles.module.scss';
-import Navbar from '../../components/navbar/navbar';
-import Container from '../../components/container/container';
-import Sidebar from '../../components/sidebar/sidebar';
-import BusinessesSection from '../../components/businesses-section/businesses-section';
 import { useParams } from 'react-router-dom';
-
+import Navbar from '@components/navbar/navbar';
+import Container from '@components/container/container';
+import Sidebar from '@components/sidebar/sidebar';
+import BusinessesSection from '@components/businesses-section/businesses-section';
+import styles from './styles.module.scss';
 
 const SearchPage = () => {
   const { category } = useParams();
@@ -16,12 +15,12 @@ const SearchPage = () => {
           <Sidebar />
           <section className={styles.bsWrapper}>
             <h2 className={styles.bsTitle}>{category}</h2>
-            <BusinessesSection shouldFilter={true}/>
+            <BusinessesSection shouldFilter />
           </section>
         </div>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default SearchPage
+export default SearchPage;

@@ -1,20 +1,17 @@
+import React, { useState } from 'react';
+import SearchIcon from '@assets/search-icon.png';
 import Container from '../container/container';
-import styles from './styles.module.scss';
-
-import SearchIcon from '../../assets/search-icon.png';
 import PrimaryButton from '../primary-button/primary-button';
-import { useState } from 'react';
-
-
+import styles from './styles.module.scss';
 
 const SearchSection = () => {
   const [inputText, setInputText] = useState('');
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
-    //TO DO: Add functionality
-    //console.log(inputText);
-  }
+    // TO DO: Add functionality
+    // console.log(inputText);
+  };
 
   return (
     <div className={styles.sectionWrapper}>
@@ -30,15 +27,18 @@ const SearchSection = () => {
               onChange={handleClick}
             />
             <PrimaryButton
-              className={styles.searchButton}
+              variant='searchButton'
+              // TO DO: Add functionality
+              // eslint-disable-next-line no-console
+              onClick={() => console.log('clicked')}
             >
-              <img src={SearchIcon} alt="search icon" />
+              <img src={SearchIcon} alt='search icon' />
             </PrimaryButton>
           </div>
         </section>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default SearchSection
+export default SearchSection;

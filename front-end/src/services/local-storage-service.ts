@@ -1,12 +1,13 @@
-const set = (key, data) => {
+const set = (key: string, data: any) => {
   localStorage.setItem(key, JSON.stringify(data));
-}
+};
 
-const get = (key, defaultData = null) => {
-  return JSON.parse(localStorage.getItem(key) ) ?? defaultData;
-}
+const get = (key: string, defaultData = null) => JSON.parse(localStorage.getItem(key))
+?? defaultData;
 
-export const LocalStorageService = {
+const LocalStorageService = {
   set,
   get,
 };
+
+export default LocalStorageService;
