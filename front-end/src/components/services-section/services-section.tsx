@@ -1,24 +1,47 @@
-import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import ServiceCard from '../service-card/service-card';
-import servicesData from '../../data/services-data';
 import Container from '../container/container';
 import styles from './styles.module.scss';
 
+type ServiceProps = {
+  id: string,
+  serviceName: string,
+  imageUrl: string
+};
+
+type ServicesProps = Array<ServiceProps> | null;
+
 const ServicesSection = () => {
-  const [services, setServices] = useState(servicesData);
+  const [services, setServices] = useState<ServicesProps>();
+
+  const fetchServices = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/categories');
+      const { categories } = response.data;
+      setServices(categories);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
 
   return (
     <section className={styles.servicesSectionWrapper}>
       <Container>
         <div className={styles.servicesSection}>
-          {services.length > 0 ? services.map((service) => (
+          {services && services.map((service) => (
             <ServiceCard
-              key={uuidv4()}
+              id={service.id}
+              key={service.id}
               src={service.imageUrl}
               serviceName={service.serviceName}
             />
-          )) : null}
+          ))}
         </div>
       </Container>
     </section>

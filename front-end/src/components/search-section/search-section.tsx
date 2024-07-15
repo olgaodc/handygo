@@ -32,7 +32,11 @@ const SearchSection = () => {
               // eslint-disable-next-line no-console
               onClick={() => console.log('clicked')}
             >
-              <img src={SearchIcon} alt='search icon' />
+              <img
+                className={styles.searchIcon}
+                src={SearchIcon}
+                alt='search icon'
+              />
             </PrimaryButton>
           </div>
         </section>

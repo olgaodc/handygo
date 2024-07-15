@@ -5,18 +5,25 @@ import { FC } from 'react';
 import styles from './styles.module.scss';
 
 interface ServiceCardProps {
+  id: string,
   src: string,
   serviceName: string,
   variant?: 'wide' | '' // ????????????????????????
 }
 
-const ServiceCard: FC<ServiceCardProps> = ({ src, serviceName, variant = '' }) => {
+const ServiceCard: FC<ServiceCardProps> = ({
+  id,
+  src,
+  serviceName,
+  variant = '',
+}) => {
   const path = routes.SEARCH_CATEGORY.url(serviceName);
   const { category } = useParams();
   const isActive = category === serviceName;
 
   return (
     <Link
+      id={id}
       className={clsx(
         styles.card,
         variant && styles[variant],
