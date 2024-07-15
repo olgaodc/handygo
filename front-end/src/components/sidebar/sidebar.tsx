@@ -10,7 +10,7 @@ const Sidebar = () => {
       <div className={styles.sidebar}>
         {servicesData.length > 0 && servicesData.map((service) => (
           <ServiceCard
-            cardType='wide'
+            variant='wide'
             key={uuidv4()}
             src={service.imageUrl}
             serviceName={service.serviceName}

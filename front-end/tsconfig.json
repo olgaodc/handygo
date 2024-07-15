@@ -21,7 +21,8 @@
       "@pages/*": ["./src/pages/*"],
       "@assets/*": ["./src/assets/*"],
       "@navigation/*": ["./src/navigation/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@styles/*": ["./src/styles/*"]
     }
   },
   "include": ["src", ".eslintrc.json"],

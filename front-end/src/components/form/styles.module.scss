@@ -1,3 +1,5 @@
+@import '@styles/colors';
+
 .form {
   display: flex;
   flex-direction: column;
@@ -20,7 +22,7 @@
     transition: color 0.3s;
 
     &:hover {
-      color: #8056eb;
+      color: $primary-color;
     }
   }
 }
@@ -36,7 +38,7 @@
   font-size: 14px;
   letter-spacing: 1px;
   font-weight: 500;
-  color: #fff;
+  color: $white-color;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.3s;
@@ -56,11 +58,11 @@
   background-color: transparent;
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid #C8C8C8;
+  border-bottom: 2px solid $light-grey-color;
 }
 
 .form input::placeholder {
-  color: #C8C8C8;
+  color: $light-grey-color;
 }
 
 .form input::placeholder, .form textarea::placeholder {

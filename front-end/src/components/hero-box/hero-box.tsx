@@ -8,7 +8,7 @@ const HeroBox = () => {
         <div className={styles.heroBox}>
           <h1 className={styles.title}>
             Find Home
-            <span>Service/Repair</span>
+            <span> Service/Repair</span>
             {' '}
             Near You
           </h1>

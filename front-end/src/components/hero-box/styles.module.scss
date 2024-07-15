@@ -1,3 +1,5 @@
+@import '@styles/colors';
+
 .heroBox {
   padding: 90px 0 0;
   display: flex;
@@ -12,12 +14,12 @@
     line-height: 140%;
 
     span {
-      color: #8056eb;
+      color: $primary-color;
     }
   }
 
   .subtitle {
-    color: #a8a8a8;
+    color: $grey-text-color;
     font-size: 24px;
     font-weight: 400;
     margin: 0 0 40px;

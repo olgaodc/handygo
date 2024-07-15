@@ -1,7 +1,9 @@
+@import '@styles/colors';
+
 .card {
   text-decoration: none;
-  background-color: #f2eefd;
-  color: #9977ef;
+  background-color: $service-card-color;
+  color: $medium-blue-color;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,8 +16,8 @@
   transition: background-color, color 0.3s;
 
   &:hover {
-    background-color: #f7f4fd;
-    color: #8056eb;
+    background-color: $service-card-hover-color;
+    color: $primary-color;
   }
 
   .image {
@@ -30,9 +32,9 @@
   }
 
   &.wide {
-    color: #000;
+    color: $black-color;
     border: 2px solid #e6e6e6;
-    background-color: #fff;
+    background-color: $white-color;
     border-radius: 20px;
     width: 300px;
     flex-direction: row;
@@ -50,15 +52,15 @@
     }
 
     &:hover {
-      background-color: #f2eefd;
-      border-color: #beaaf5;
-      color: #8056eb;
+      background-color: $service-card-color;
+      border-color: $light-blue-border-color;
+      color: $primary-color;
     }
   }
 
   &.active {
-    background-color: #f2eefd;
-    border-color: #beaaf5;
-    color: #8056eb;
+    background-color: $service-card-color;
+    border-color: $light-blue-border-color;
+    color: $primary-color;
   }
 }

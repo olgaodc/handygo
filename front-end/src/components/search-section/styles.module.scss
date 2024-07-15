@@ -1,3 +1,5 @@
+@import '@styles/colors';
+
 .section {
   .searchBox {
     display: flex;
@@ -20,7 +22,7 @@
       }
 
       &:focus-visible {
-        outline-color: #8056eb;
+        outline-color: $primary-color;
       }
     }
 
