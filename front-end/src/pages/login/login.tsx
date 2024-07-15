@@ -1,6 +1,6 @@
-import Container from '@components/container/container';
+import Container from '@/components/container/container';
 import { Link, useNavigate } from 'react-router-dom';
-import routes from '@navigation/routes';
+import routes from '@/navigation/routes';
 import { FC } from 'react';
 import { Form, Formik } from 'formik';
 import { LoginFormValues } from '../../formik/types';

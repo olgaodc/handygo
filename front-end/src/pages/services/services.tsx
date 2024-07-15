@@ -1,5 +1,5 @@
-import Navbar from '@components/navbar/navbar';
-import Container from '@components/container/container';
+import Navbar from '@/components/navbar/navbar';
+import Container from '@/components/container/container';
 
 const ServicesPage = () => {
   return (

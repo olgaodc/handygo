@@ -1,4 +1,4 @@
-import Routes from '@navigation/router';
+import Routes from '@/navigation/router';
 
 const App = () => {
   return (

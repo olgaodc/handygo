@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
-import routes from '@navigation/routes';
-import LogoImage from '@assets/logo.svg';
+import routes from '@/navigation/routes';
+import LogoImage from '@/assets/logo.svg';
 import Container from '../container/container';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';

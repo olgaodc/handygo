@@ -1,9 +1,9 @@
-import Navbar from '@components/navbar/navbar';
-import SearchSection from '@components/search-section/search-section';
-import BusinessesSection from '@components/businesses-section/businesses-section';
-import HeroBox from '@components/hero-box/hero-box';
-import ServicesSection from '@components/services-section/services-section';
-import Container from '@components/container/container';
+import Navbar from '@/components/navbar/navbar';
+import SearchSection from '@/components/search-section/search-section';
+import BusinessesSection from '@/components/businesses-section/businesses-section';
+import HeroBox from '@/components/hero-box/hero-box';
+import ServicesSection from '@/components/services-section/services-section';
+import Container from '@/components/container/container';
 import styles from './styles.module.scss';
 
 const HomePage = () => {

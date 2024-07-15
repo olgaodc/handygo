@@ -35,5 +35,22 @@
         "func-style": ["error", "expression"],
         "quotes": ["error", "single"],
         "jsx-quotes": ["error", "prefer-single"]
+    },
+    "import/resolver": {
+        "node": {
+            "extensions": [".js", ".vue", ".ts", ".d.ts"]
+        },
+        "alias": {
+            "extensions": [".vue", ".js", ".ts", ".scss", ".d.ts"],
+            "map": [
+                ["@/components", "./src/components"],
+                ["@/pages", "./src/pages"],
+                ["@/assets", "./src/assets"],
+                ["@/navigation", "./src/navigation"],
+                ["@/hooks", "./src/hooks"],
+                ["@/styles", "./src/styles"]
+            ]
+        }
     }
 }
+

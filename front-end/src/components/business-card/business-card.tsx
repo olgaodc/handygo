@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import useLikeCard from '@hooks/use-like-card';
+import useLikeCard from '@/hooks/use-like-card';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
 

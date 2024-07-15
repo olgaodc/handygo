@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchIcon from '@assets/search-icon.png';
+import SearchIcon from '@/assets/search-icon.png';
 import Container from '../container/container';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
