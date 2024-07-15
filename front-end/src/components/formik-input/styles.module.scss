@@ -1,0 +1,28 @@
+@import '@styles/colors';
+
+.inputWrapper {
+  width: 280px;
+
+  .input {
+    width: 100%;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    border: none;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid $light-grey-color;
+
+    &::placeholder {
+      color: $light-grey-color;
+    }
+  }
+
+  .error {
+    margin-top: 8px;
+    color: $danger-color;
+  }
+}
+
