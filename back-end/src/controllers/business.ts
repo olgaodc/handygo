@@ -28,10 +28,6 @@ export const GET_BUSINESSES_BY_CATEGORY = async (req: Request, res: Response) =>
   try {
     const businesses = await BusinessModel.find({ category: req.params.category });
 
-    if (!businesses.length) {
-      return res.status(404).json({ response: 'No businesses found for this category' });
-    }
-
     return res.status(200).json({ businesses });
   } catch (err) {
     return res.status(500).json({ response: 'Error, please try later', err });
