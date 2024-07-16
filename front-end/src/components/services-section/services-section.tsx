@@ -1,34 +1,10 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import useServices from '@/hooks/use-services';
 import ServiceCard from '../service-card/service-card';
 import Container from '../container/container';
 import styles from './styles.module.scss';
 
-type ServiceProps = {
-  id: string,
-  serviceName: string,
-  imageUrl: string
-};
-
-type ServicesProps = Array<ServiceProps> | null;
-
 const ServicesSection = () => {
-  const [services, setServices] = useState<ServicesProps>();
-
-  const fetchServices = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/categories');
-      const { categories } = response.data;
-      setServices(categories);
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
+  const { data: services } = useServices();
 
   return (
     <section className={styles.servicesSectionWrapper}>

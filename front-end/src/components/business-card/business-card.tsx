@@ -75,7 +75,7 @@ const BusinessCard: FC<BusinessCardProps> = ({
         {description && <p className={styles.description}>{description}</p>}
         <PrimaryButton
           variant='primary'
-          // TO DO: ADD FUNCTIONALITY
+          // TODO: ADD FUNCTIONALITY
           // eslint-disable-next-line no-console
           onClick={() => console.log('clicked')}
         >

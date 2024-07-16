@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     path: routes.SEARCH_CATEGORY.path,
     element: <SearchPage />,
   },
-  // TO DO:
+  // TODO: create erroe page
   // {
   //   path: routes.ERROR,
   //   element: <ErrorPage />,

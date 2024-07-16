@@ -9,7 +9,7 @@ const SearchSection = () => {
 
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
-    // TO DO: Add functionality
+    // TODO: Add functionality
     // console.log(inputText);
   };
 
@@ -28,7 +28,7 @@ const SearchSection = () => {
             />
             <PrimaryButton
               variant='searchButton'
-              // TO DO: Add functionality
+              // TODO: Add functionality
               // eslint-disable-next-line no-console
               onClick={() => console.log('clicked')}
             >

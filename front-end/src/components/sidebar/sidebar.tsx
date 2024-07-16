@@ -1,35 +1,11 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import useServices from '@/hooks/use-services';
 import styles from './styles.module.scss';
 import ServiceCard from '../service-card/service-card';
 
-// TO DO: REFACTOR CODE, REUSE SERVICE-SECTION HERE
-
-type ServiceProps = {
-  id: string,
-  serviceName: string,
-  imageUrl: string
-};
-
-type ServicesProps = Array<ServiceProps> | null;
+// TODO: REFACTOR CODE, REUSE SERVICE-SECTION HERE
 
 const Sidebar = () => {
-  const [services, setServices] = useState<ServicesProps>();
-
-  const fetchServices = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/categories');
-      const { categories } = response.data;
-      setServices(categories);
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchServices();
-  }, []);
+  const { data: services } = useServices();
 
   return (
     <aside className={styles.sidebarWrapper}>

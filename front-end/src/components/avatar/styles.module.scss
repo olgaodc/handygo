@@ -1,0 +1,14 @@
+.avatar {
+  font-size: 22px;
+  font-weight: 500;
+  border: none;
+  background-color: $primary-color;
+  color: $white-color;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 22px;
+  cursor: pointer;
+  transition: all 0.3s; 
+}

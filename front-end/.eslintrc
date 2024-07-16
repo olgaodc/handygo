@@ -34,7 +34,8 @@
         "prefer-arrow-callback": "error",
         "func-style": ["error", "expression"],
         "quotes": ["error", "single"],
-        "jsx-quotes": ["error", "prefer-single"]
+        "jsx-quotes": ["error", "prefer-single"],
+        "react/require-default-props": "off"
     },
     "settings": {
         "import/resolver": {
@@ -48,7 +49,8 @@
                     ["@/hooks", "./src/hooks"],
                     ["@/styles", "./src/styles"],
                     ["@/types", "./src/types"],
-                    ["@/formik-validation", "./src/formik-validation"]
+                    ["@/formik-validation", "./src/formik-validation"],
+                    ["@/services", "./src/services"]
                 ]
             },
             "node": {
