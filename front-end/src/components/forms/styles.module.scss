@@ -14,36 +14,10 @@
     font-size: 28px;
   }
 
-  .inputWrapper {
-    width: 280px;
-
-    .input {
-      width: 100%;
-      outline: none;
-      font-family: "Roboto", sans-serif;
-      font-size: 14px;
-      border: none;
-      padding: 5px;
-      background-color: transparent;
-      border: none;
-      border-radius: 0;
-      border-bottom: 2px solid $light-grey-color;
-
-      &::placeholder {
-        color: $light-grey-color;
-      }
-    }
-
-    .error {
-      margin-top: 8px;
-      color: $danger-color;
-    }
-  }
-
   .button {
     background: rgb(104, 198, 249);
     background: linear-gradient(90deg, rgba(104, 198, 249, 1) 0%, rgba(168, 62, 242, 1) 100%);
-    width: 40%;
+    min-width: 40%;
     padding: 12px 20px;
     border: none;
     border-radius: 30px;

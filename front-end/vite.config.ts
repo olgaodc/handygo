@@ -15,14 +15,7 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@components': path.resolve(__dirname, './src/components'),
-      '@pages': path.resolve(__dirname, './src/pages'),
-      '@assets': path.resolve(__dirname, './src/assets'),
-      '@navigation': path.resolve(__dirname, './src/navigation'),
-      '@hooks': path.resolve(__dirname, './src/hooks'),
-      '@styles': path.resolve(__dirname, './src/styles'),
-    }
+    alias: { '@': path.resolve(__dirname, './src')},
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
 });
