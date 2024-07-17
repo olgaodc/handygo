@@ -50,7 +50,8 @@
                     ["@/styles", "./src/styles"],
                     ["@/types", "./src/types"],
                     ["@/formik-validation", "./src/formik-validation"],
-                    ["@/services", "./src/services"]
+                    ["@/services", "./src/services"],
+                    ["@/store", "./src/store"]
                 ]
             },
             "node": {

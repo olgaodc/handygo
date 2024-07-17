@@ -3,6 +3,8 @@ import { LoginFormValues } from '@/types/login-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import loginValidationSchema from '@/formik-validation/login-validation-schema';
+import { useEffect } from 'react';
+import useAuth from '@/store/use-auth';
 import Container from '../container/container';
 import FormikInput from '../formik-input/formik-input';
 import styles from './styles.module.scss';
@@ -13,12 +15,18 @@ const initialValues: LoginFormValues = {
 };
 
 const LoginForm = () => {
+  const { login, error, user } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (values: LoginFormValues) => {
-    console.log(values);
-    navigate(routes.HOME);
+  const handleSubmit = async (values: LoginFormValues) => {
+    await login(values.email, values.password);
   };
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate(routes.HOME);
+    }
+  }, [user]);
 
   return (
     <Container>
@@ -41,7 +49,7 @@ const LoginForm = () => {
                 type='password'
                 placeholder='Password'
               />
-
+              {error && <div className={styles.error}>{error}</div>}
               <button
                 className={styles.button}
                 type='submit'

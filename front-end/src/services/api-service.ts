@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 const ApiService = axios.create({
   baseURL: 'http://localhost:3001/',
@@ -17,9 +17,6 @@ ApiService.interceptors.request.use(
     }
 
     return config;
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error);
   },
 );
 
