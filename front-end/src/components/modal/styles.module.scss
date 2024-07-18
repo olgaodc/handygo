@@ -1,0 +1,28 @@
+.modal {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: -400px;
+  background: $white-color;
+  padding: 30px;
+  opacity: 0;
+  // transform: translateX(-100vw);
+  transition: all 0.5s ease;
+
+
+  &.isOpen {
+    right: 0;
+    opacity: 1;
+    // transform: translateX(0);
+  }
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}

@@ -5,6 +5,7 @@ import AboutPage from '@/pages/about/about';
 import LoginPage from '@/pages/login/login';
 import SearchPage from '@/pages/search/search';
 import RegisterPage from '@/pages/register/register';
+import BusinessPage from '@/pages/business/business';
 import routes from './routes';
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: routes.SEARCH_CATEGORY.path,
     element: <SearchPage />,
+  },
+  {
+    path: routes.BUSINESS_ID.path,
+    element: <BusinessPage />,
   },
   // TODO: create erroe page
   // {

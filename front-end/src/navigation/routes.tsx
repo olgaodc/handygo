@@ -8,6 +8,10 @@ const routes = {
     path: '/search/:category',
     url: (category: string) => `/search/${category}`,
   },
+  BUSINESS_ID: {
+    path: '/business/:id',
+    url: (id: string) => `/business/${id}`,
+  },
   ERROR: '*',
 };
 
