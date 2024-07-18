@@ -4,8 +4,8 @@ import styles from './styles.module.scss';
 
 interface PrimaryButtonProps {
   children: React.ReactNode,
-  onClick: React.MouseEventHandler<HTMLButtonElement>,
-  variant: 'primary' | 'searchButton',
+  onClick?: React.MouseEventHandler<HTMLButtonElement>,
+  variant: 'primary' | 'round' | 'small',
 }
 
 const PrimaryButton: FC<PrimaryButtonProps> = ({

@@ -27,7 +27,7 @@ const SearchSection = () => {
               onChange={handleClick}
             />
             <PrimaryButton
-              variant='searchButton'
+              variant='round'
               // TODO: Add functionality
               // eslint-disable-next-line no-console
               onClick={() => console.log('clicked')}
