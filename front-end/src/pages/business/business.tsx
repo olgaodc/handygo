@@ -1,5 +1,4 @@
 import Container from '@/components/container/container';
-import Navbar from '@/components/navbar/navbar';
 import ApiService from '@/services/api-service';
 import { Business } from '@/types/business';
 import { useEffect, useState } from 'react';
@@ -29,22 +28,19 @@ const BusinessPage = () => {
   }, [businessId]);
 
   return (
-    <>
-      <Navbar />
-      <div className={styles.content}>
-        <Container>
-          <div className={styles.sectionWrapper}>
-            {business && (
-              <div className={styles.section}>
-                <BusinessInfo business={business} />
-                <BusinessDescription business={business} />
-              </div>
-            )}
-
+    <div className={styles.content}>
+      <Container>
+        <div className={styles.sectionWrapper}>
+          {business && (
+          <div className={styles.section}>
+            <BusinessInfo business={business} />
+            <BusinessDescription business={business} />
           </div>
-        </Container>
-      </div>
-    </>
+          )}
+
+        </div>
+      </Container>
+    </div>
 
   );
 };

@@ -1,4 +1,3 @@
-import Navbar from '@/components/navbar/navbar';
 import SearchSection from '@/components/search-section/search-section';
 import BusinessesSection from '@/components/business-components/businesses-section/businesses-section';
 import HeroBox from '@/components/hero-box/hero-box';
@@ -9,7 +8,6 @@ import styles from './styles.module.scss';
 const HomePage = () => {
   return (
     <>
-      <Navbar />
       <HeroBox />
       <SearchSection />
       <ServicesSection />
