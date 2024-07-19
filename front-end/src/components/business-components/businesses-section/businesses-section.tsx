@@ -21,15 +21,7 @@ const BusinessesSection: FC<BusinessSectionProps> = ({ shouldFilter = false }) =
   return (
     <div className={styles.section}>
       {filteredBusinesses.length > 0 ? filteredBusinesses.map((business) => (
-        <BusinessCard
-          id={business.id}
-          key={business.id}
-          category={business.category}
-          businessName={business.businessName}
-          personName={business.person}
-          address={business.address}
-          images={business.images}
-        />
+        <BusinessCard key={business.id} business={business} />
       )) : <p>No data</p>}
     </div>
   );

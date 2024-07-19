@@ -1,4 +1,5 @@
 interface ImageProps {
+  _id: string;
   url: string;
   alt?: string;
 }

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import Navbar from '@/components/navbar/navbar';
 import Container from '@/components/container/container';
 import Sidebar from '@/components/sidebar/sidebar';
-import BusinessesSection from '@/components/businesses-section/businesses-section';
+import BusinessesSection from '@/components/business-components/businesses-section/businesses-section';
 import styles from './styles.module.scss';
 
 const SearchPage = () => {

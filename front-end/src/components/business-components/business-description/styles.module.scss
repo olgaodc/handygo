@@ -1,0 +1,33 @@
+.sectionWrapper {
+  display: flex;
+  gap: 40px;
+
+  .section {
+    width: 70%;
+
+    .descriptionWrapper {
+      margin-bottom: 50px;
+    }
+
+    .title {
+      font-size: 26px;
+    }
+
+    .description {
+      line-height: 140%;
+      margin: 0;
+    }
+
+    .galleryImages {
+      display: flex;
+      gap: 20px;
+    
+      .galleryImage {
+        width: 180px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  
+}
