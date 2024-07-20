@@ -17,15 +17,19 @@
         font-size: 18px;
         font-weight: 500;
         color: #323232;
-        transform: all 0.3s;
+        transition: all 0.3s;
 
         &:hover {
-          text-decoration: underline;
+          color: $primary-color;
         }
 
         .logoImage {
           display: block;
         }
+      }
+
+      .active {
+        color: $primary-color;
       }
     }
   }

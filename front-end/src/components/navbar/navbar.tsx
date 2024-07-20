@@ -1,8 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
 import LogoImage from '@/assets/logo.svg';
 import useAuth from '@/store/use-auth';
 // import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 import Container from '../container/container';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
@@ -23,12 +24,42 @@ const Navbar = () => {
       <Container>
         <nav className={styles.navbar}>
           <div className={styles.navbarList}>
-            <Link to={routes.HOME} className={styles.listItem}>
+            <NavLink
+              to={routes.HOME}
+              className={({ isActive }) => clsx(
+                styles.listItem,
+                isActive && styles.active,
+              )}
+            >
               <img className={styles.logoImage} src={LogoImage} alt='logo' />
-            </Link>
-            <Link to={routes.HOME} className={styles.listItem}>Home</Link>
-            <Link to={routes.SERVICES} className={styles.listItem}>Services</Link>
-            <Link to={routes.ABOUT} className={styles.listItem}>About Us</Link>
+            </NavLink>
+            <NavLink
+              to={routes.HOME}
+              className={({ isActive }) => clsx(
+                styles.listItem,
+                isActive && styles.active,
+              )}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to={routes.SERVICES}
+              className={({ isActive }) => clsx(
+                styles.listItem,
+                isActive && styles.active,
+              )}
+            >
+              Services
+            </NavLink>
+            <NavLink
+              to={routes.ABOUT}
+              className={({ isActive }) => clsx(
+                styles.listItem,
+                isActive && styles.active,
+              )}
+            >
+              About Us
+            </NavLink>
           </div>
           {user
             ? <Avatar />

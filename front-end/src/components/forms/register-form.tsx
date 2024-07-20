@@ -30,44 +30,47 @@ const RegisterForm = () => {
   }, [user]);
 
   return (
-    <Container>
-      <div className={styles.formWrapper}>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={RegisterValidationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting }) => (
-            <Form className={styles.form} noValidate>
-              <h2 className={styles.title}>Create an account</h2>
-              <FormikInput
-                name='name'
-                type='name'
-                placeholder='Name'
-              />
-              <FormikInput
-                name='email'
-                type='email'
-                placeholder='Email'
-              />
-              <FormikInput
-                name='password'
-                type='password'
-                placeholder='Password'
-              />
-              {error && <div className={styles.error}>{error}</div>}
-              <button
-                className={styles.button}
-                type='submit'
-                disabled={isSubmitting}
-              >
-                Crate account
-              </button>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </Container>
+    <div className={styles.content}>
+      <Container>
+        <div className={styles.formWrapper}>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={RegisterValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form className={styles.form} noValidate>
+                <h2 className={styles.title}>Create an account</h2>
+                <FormikInput
+                  name='name'
+                  type='name'
+                  placeholder='Name'
+                />
+                <FormikInput
+                  name='email'
+                  type='email'
+                  placeholder='Email'
+                />
+                <FormikInput
+                  name='password'
+                  type='password'
+                  placeholder='Password'
+                />
+                {error && <div className={styles.error}>{error}</div>}
+                <button
+                  className={styles.button}
+                  type='submit'
+                  disabled={isSubmitting}
+                >
+                  Crate account
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </Container>
+    </div>
+
   );
 };
 

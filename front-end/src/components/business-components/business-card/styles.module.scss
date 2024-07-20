@@ -10,6 +10,8 @@
 
   &.liked {
     .likeBtn {
+      
+
       svg {
         fill: $primary-color;
       }
@@ -33,6 +35,7 @@
   }
 
   .likeBtn {
+    all: unset;
     opacity: 0;
     position: absolute;
     top: 10px;

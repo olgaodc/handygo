@@ -1,0 +1,54 @@
+.contentWrapper {
+  margin: 40px 0 100px;
+
+  .flexWrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+
+    .aboutTitle {
+      font-size: 36px;
+      margin: 0 0 20px;
+    }
+
+    .aboutImage {
+      max-width: 440px;
+    }
+
+    .history {
+      margin: 50px 0;
+
+      .historyTitle {
+        margin: 0 0 15px;
+        font-size: 32px;
+      }
+    }
+  }
+
+  .trusted {
+
+    .title {
+      margin: 0 0 20px;
+      font-size: 32px;
+      text-align: center;
+    }
+
+    .trustedImages {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+
+      img {
+        width: 200px;
+        height: 90px;
+      }
+    }
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 130%;
+  }
+}

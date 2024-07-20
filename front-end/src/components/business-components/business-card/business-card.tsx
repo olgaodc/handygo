@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { FC } from 'react';
+import React, { FC } from 'react';
 import useLikeCard from '@/hooks/use-like-card';
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
@@ -26,7 +26,9 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
   };
 
   // TODO: TIKRINTI NE CIA!!!
-  const handleLike = () => {
+  const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
     if (isCardLiked(business.id)) {
       removeLikedCard(business.id);
     } else {
@@ -44,15 +46,15 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
         isCardLiked(business.id) && styles.liked,
       )}
     >
-      <span
-        role='button'
-        tabIndex={0}
+      <button
+        type='button'
+        // tabIndex={0}
         className={styles.likeBtn}
         onClick={handleLike}
-        onKeyDown={handleLike}
+        // onKeyDown={handleLike}
       >
         <ReactSVG className={styles.icon} src={HeartIcon} />
-      </span>
+      </button>
       <div className={styles.images}>
         <img
           key={business.images[0]._id}

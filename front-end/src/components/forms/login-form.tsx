@@ -29,42 +29,45 @@ const LoginForm = () => {
   }, [user]);
 
   return (
-    <Container>
-      <div className={styles.formWrapper}>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={loginValidationSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting }) => (
-            <Form className={styles.form} noValidate>
-              <h2 className={styles.title}>Login</h2>
-              <FormikInput
-                name='email'
-                type='email'
-                placeholder='Email'
-              />
-              <FormikInput
-                name='password'
-                type='password'
-                placeholder='Password'
-              />
-              {error && <div className={styles.error}>{error}</div>}
-              <button
-                className={styles.button}
-                type='submit'
-                disabled={isSubmitting}
-              >
-                Login
-              </button>
-              <Link className={styles.link} to={routes.REGISTER}>
-                Don&#39;t have an account? Sign up
-              </Link>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </Container>
+    <div className={styles.content}>
+      <Container>
+        <div className={styles.formWrapper}>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={loginValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form className={styles.form} noValidate>
+                <h2 className={styles.title}>Login</h2>
+                <FormikInput
+                  name='email'
+                  type='email'
+                  placeholder='Email'
+                />
+                <FormikInput
+                  name='password'
+                  type='password'
+                  placeholder='Password'
+                />
+                {error && <div className={styles.error}>{error}</div>}
+                <button
+                  className={styles.button}
+                  type='submit'
+                  disabled={isSubmitting}
+                >
+                  Login
+                </button>
+                <Link className={styles.link} to={routes.REGISTER}>
+                  Don&#39;t have an account? Sign up
+                </Link>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </Container>
+    </div>
+
   );
 };
 
