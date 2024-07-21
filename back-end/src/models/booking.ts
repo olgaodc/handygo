@@ -8,7 +8,12 @@ const bookingSchema = new mongoose.Schema({
   time: { type: String, required: true, minlength: 5 },
   userEmail: { type: String, required: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
   userName: { type: String, required: true, minlength: 3 },
-  status: { type: String, required: true, minlength: 5 },
+  status: {
+    type: String,
+    required: true,
+    enum: ['confirmed', 'pending', 'cancelled'],
+    minlength: 5,
+  },
   creationDate: { type: Date, required: true },
 });
 

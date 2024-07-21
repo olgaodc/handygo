@@ -11,7 +11,17 @@ export const GET_USER_BOOKINGS = async (req: Request, res: Response) => {
       return res.status(400).json({ response: 'Invalid email format' });
     }
 
-    const bookings = await BookingModel.find({ userEmail: email });
+    const bookings = await BookingModel.aggregate([
+      { $match: { userEmail: email } },
+      {
+        $lookup: {
+          from: 'businesses',
+          localField: 'businessId',
+          foreignField: 'id',
+          as: 'businessInfo',
+        },
+      },
+    ]);
 
     if (bookings.length === 0) {
       return res.status(404).json({ response: 'Bookings not found' });
@@ -22,6 +32,18 @@ export const GET_USER_BOOKINGS = async (req: Request, res: Response) => {
     return res.status(500).json({ response: 'Error, please try later', err });
   }
 };
+
+// const aggregatedBooking = await BookingModel.aggregate([
+//   { $match: { id: newBooking.id } },
+//   {
+//     $lookup: {
+//       from: 'businesses',
+//       localField: 'businessId',
+//       foreignField: 'id',
+//       as: 'businessInfo',
+//     },
+//   },
+// ]);
 
 export const GET_BUSINESS_BOOKINGS_BY_DATE = async (req: Request, res: Response) => {
   try {
@@ -56,6 +78,7 @@ export const ADD_BOOKING = async (req: Request, res: Response) => {
     });
 
     await newBooking.save();
+
     return res.status(200).json({ booking: newBooking });
   } catch (err) {
     return res.status(500).json({ response: 'Error, please try later', err });
