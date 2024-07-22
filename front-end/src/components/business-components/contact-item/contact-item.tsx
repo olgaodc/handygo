@@ -7,12 +7,15 @@ interface Props {
   src: string,
   children: React.ReactNode,
   variant?: string,
+  svgColor?: string,
 }
 
-const ContactItem: FC<Props> = ({ src, children, variant = '' }) => {
+const ContactItem: FC<Props> = ({
+  src, children, variant = '', svgColor = '',
+}) => {
   return (
     <div className={clsx(styles.contactItem, styles[variant])}>
-      <ReactSVG className={styles.icon} src={src} />
+      <ReactSVG className={clsx(styles.icon, styles[svgColor])} src={src} />
       <div className={styles.contact}>{children}</div>
     </div>
   );

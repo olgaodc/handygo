@@ -9,9 +9,10 @@
     .navbarList {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 10px;
 
       .listItem {
+        padding: 10px;
         display: block;
         text-decoration: none;
         font-size: 18px;

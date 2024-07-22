@@ -18,17 +18,17 @@ const Dropdown: FC<Props> = ({ isOpen = false, closeDropdown }) => {
       isOpen && styles.isOpen,
     )}
     >
-      <Link
+      <div
         className={styles.dropdownItem}
-        to={routes.SERVICES}
-        onClick={closeDropdown}
-
+        // TODO: Add link to user account page
+        // to={routes.SERVICES}
+        // onClick={closeDropdown}
       >
         My Account
-      </Link>
+      </div>
       <Link
         className={styles.dropdownItem}
-        to={routes.SERVICES}
+        to={routes.BOOKINGS}
         onClick={closeDropdown}
       >
         My Bookings

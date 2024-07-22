@@ -5,6 +5,8 @@
   color: $darker-grey-color;
   font-size: 18px;
 
+
+
   &.special {
     color: $primary-color;
 
@@ -15,14 +17,21 @@
     }
   }
 
-  .icon {
-    height: 20px;
-    width: 20px;
-  
-    svg path{
+  .icon {  
+    svg {
       height: 20px;
       width: 20px;
-      fill: $darker-grey-color;;
+
+      path{
+        fill: $darker-grey-color;
+      }
+    }
+
+    &.primary {
+      svg path {
+        fill: $primary-color;
+      }
     }
   }
+
 }

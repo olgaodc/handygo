@@ -20,6 +20,7 @@ const BusinessesSection: FC<BusinessSectionProps> = ({ shouldFilter = false }) =
 
   return (
     <div className={styles.section}>
+      {/* TODO: Fix on loading do not show no data message */}
       {filteredBusinesses.length > 0 ? filteredBusinesses.map((business) => (
         <BusinessCard key={business.id} business={business} />
       )) : <p>No data</p>}
