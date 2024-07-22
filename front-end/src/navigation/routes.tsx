@@ -12,6 +12,7 @@ const routes = {
     path: '/business/:id',
     url: (id: string) => `/business/${id}`,
   },
+  BOOKINGS: '/bookings',
   ERROR: '*',
 };
 

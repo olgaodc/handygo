@@ -7,6 +7,7 @@ import SearchPage from '@/pages/search/search';
 import RegisterPage from '@/pages/register/register';
 import BusinessPage from '@/pages/business/business';
 import MainLayout from '@/components/main-layout/main-layout';
+import BookingsPage from '@/pages/bookings/bookings';
 import routes from './routes';
 
 const router = createBrowserRouter([
@@ -42,7 +43,11 @@ const router = createBrowserRouter([
         path: routes.BUSINESS_ID.path,
         element: <BusinessPage />,
       },
-      // TODO: create erroe page
+      {
+        path: routes.BOOKINGS,
+        element: <BookingsPage />,
+      },
+      // TODO: create error page
       // {
       //   path: routes.ERROR,
       //   element: <ErrorPage />,
