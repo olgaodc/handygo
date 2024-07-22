@@ -11,7 +11,6 @@ import styles from './styles.module.scss';
 interface Props {
   activeCategory: string,
   businessId: string,
-  // category: boolean,
 }
 
 const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {

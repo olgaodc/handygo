@@ -1,22 +1,12 @@
 .modal {
+  width: 420px;
   height: 100vh;
   position: absolute;
   top: 0;
-  right: -400px;
+  right: 0;
   background: $white-color;
   padding: 30px;
-  opacity: 0;
-  // transform: translateX(-100vw);
-  transition: all 0.5s ease;
-
-
-  &.isOpen {
-    right: 0;
-    opacity: 1;
-    // transform: translateX(0);
-  }
 }
-
 
 .modalOverlay {
   position: fixed;
@@ -25,4 +15,19 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
+}
+
+:global {
+  .ReactModal__Overlay {
+    opacity: 0;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+  
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
 }
