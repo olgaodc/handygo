@@ -15,11 +15,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["jest", "node"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", ".eslintrc.json"],
+  "include": ["src", ".eslintrc.json", "./jest.setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

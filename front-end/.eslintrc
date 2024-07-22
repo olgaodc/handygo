@@ -8,7 +8,9 @@
         "airbnb-typescript",
         "eslint:recommended",
         "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended"
+        "plugin:jsx-a11y/recommended",
+        "plugin:jest/recommended",
+        "plugin:testing-library/react"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -18,7 +20,9 @@
     },
     "plugins": [
         "@typescript-eslint",
-        "react"
+        "react",
+        "jest",
+        "testing-library"
     ],
     "rules": {
         "no-underscore-dangle": "off",
@@ -52,7 +56,8 @@
                     ["@/formik-validation", "./src/formik-validation"],
                     ["@/services", "./src/services"],
                     ["@/store", "./src/store"],
-                    ["@/api", "./src/api"]
+                    ["@/api", "./src/api"],
+                    ["@/data", "./src/data"]
                 ]
             },
             "node": {

@@ -3,3 +3,5 @@ build/
 dist/
 vite.config.ts
 .eslintrc
+jest.setup.ts
+jest.config.js
