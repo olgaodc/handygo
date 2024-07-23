@@ -10,7 +10,6 @@ const SearchSection = () => {
   const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
     // TODO: Add functionality
-    // console.log(inputText);
   };
 
   return (
@@ -20,7 +19,7 @@ const SearchSection = () => {
           <div className={styles.searchBox}>
             <input
               className={styles.input}
-              id='serviceName'
+              id='search-input'
               type='text'
               placeholder='Search'
               value={inputText}
@@ -29,8 +28,6 @@ const SearchSection = () => {
             <PrimaryButton
               variant='round'
               // TODO: Add functionality
-              // eslint-disable-next-line no-console
-              onClick={() => console.log('clicked')}
             >
               <img
                 className={styles.searchIcon}

@@ -13,16 +13,16 @@ export const GET_CATEGORIES = async (req: Request, res: Response) => {
 
 export const ADD_CATEGORY = async (req: Request, res: Response) => {
   try {
-    const { serviceName, imageUrl, bgColor } = req.body;
+    const { categoryName, imageUrl, bgColor } = req.body;
 
-    if (!serviceName || !imageUrl || !bgColor) {
+    if (!categoryName || !imageUrl || !bgColor) {
       return res.status(400).json({ response: 'All fields are required' });
     }
 
     const updatedImageUrl = imageUrl.replace(/color=[0-9a-f]{6}/i, `color=${bgColor}`);
     const category = new CategoryModel({
       id: uuidv4(),
-      serviceName,
+      categoryName,
       imageUrl: updatedImageUrl,
       bgColor,
       creationDate: new Date(),

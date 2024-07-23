@@ -48,10 +48,8 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
     >
       <button
         type='button'
-        // tabIndex={0}
         className={styles.likeBtn}
         onClick={handleLike}
-        // onKeyDown={handleLike}
       >
         <ReactSVG className={styles.icon} src={HeartIcon} />
       </button>
@@ -65,7 +63,7 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
       </div>
       <div className={styles.cardInfo}>
         <span className={styles.category}>{business.category}</span>
-        <h3 className={styles.serviceName}>{business.businessName}</h3>
+        <h3 className={styles.businessName}>{business.businessName}</h3>
         <p className={styles.personName}>{business.person}</p>
         <p className={styles.address}>{business.address}</p>
         {showButton && (

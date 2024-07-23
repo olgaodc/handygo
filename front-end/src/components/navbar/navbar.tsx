@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
 import LogoImage from '@/assets/logo.svg';
 import useAuth from '@/store/use-auth';
-// import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Container from '../container/container';
 import PrimaryButton from '../primary-button/primary-button';
@@ -16,8 +15,6 @@ const Navbar = () => {
   const handleClick = () => {
     navigate(routes.LOGIN);
   };
-
-  // TODO: WHEN THE USER LOGGED IN THE LOGIN BUTTON SHOULD NOT BE SHOWN WHILE THE PAGE IS LOADING
 
   return (
     <div className={styles.navbarWrapper}>

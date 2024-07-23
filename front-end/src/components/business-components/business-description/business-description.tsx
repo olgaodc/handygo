@@ -7,7 +7,6 @@ interface BusinessProps {
   business: Business,
 }
 const BusinessDescription: FC<BusinessProps> = ({ business }) => {
-  // console.log(business.category);
   return (
     <div className={styles.sectionWrapper}>
       <div className={styles.section}>

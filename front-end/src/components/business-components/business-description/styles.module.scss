@@ -1,6 +1,6 @@
 .sectionWrapper {
   display: flex;
-  gap: 40px;
+  gap: 50px;
 
   .section {
     width: 70%;
@@ -24,6 +24,7 @@
     
       .galleryImage {
         width: 180px;
+        object-fit: cover;
         border-radius: 8px;
       }
     }

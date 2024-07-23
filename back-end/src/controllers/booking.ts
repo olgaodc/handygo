@@ -33,18 +33,6 @@ export const GET_USER_BOOKINGS = async (req: Request, res: Response) => {
   }
 };
 
-// const aggregatedBooking = await BookingModel.aggregate([
-//   { $match: { id: newBooking.id } },
-//   {
-//     $lookup: {
-//       from: 'businesses',
-//       localField: 'businessId',
-//       foreignField: 'id',
-//       as: 'businessInfo',
-//     },
-//   },
-// ]);
-
 export const GET_BUSINESS_BOOKINGS_BY_DATE = async (req: Request, res: Response) => {
   try {
     const filteredBookings = await BookingModel.find({

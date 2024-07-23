@@ -27,7 +27,7 @@ const BookingCard: FC<Pros> = ({ booking }) => {
         alt={businessImage.alt || 'Image'}
       />
       <div className={styles.cardInfo}>
-        <h3 className={styles.serviceName}>{business.businessName}</h3>
+        <h3 className={styles.businessName}>{business.businessName}</h3>
         <ContactItem src={UserIcon} variant='special'>{business.person}</ContactItem>
         <ContactItem src={LocationIcon} svgColor='primary'>{business.address}</ContactItem>
         <ContactItem src={CalendarIcon} svgColor='primary'>

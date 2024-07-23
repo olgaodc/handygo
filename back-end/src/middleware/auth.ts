@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express';
 
 export interface UserPayload {
   id: string;
-  iat: number; // issued at
-  exp: number; // expiration date
+  iat: number;
+  exp: number;
 }
 
 declare global {

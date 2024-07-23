@@ -1,23 +1,21 @@
-import useServices from '@/hooks/use-services';
+import useCategories from '@/hooks/use-categories';
 import styles from './styles.module.scss';
-import ServiceCard from '../service-card/service-card';
+import CategoryCard from '../category-card/category-card';
 
-// TODO: REFACTOR CODE, REUSE SERVICE-SECTION HERE
+// TODO: REFACTOR CODE, REUSE CATEGORIES-SECTION HERE
 
 const Sidebar = () => {
-  const { data: services } = useServices();
+  const { data: categories } = useCategories();
 
   return (
     <aside className={styles.sidebarWrapper}>
       <h2 className={styles.title}>Categories</h2>
       <div className={styles.sidebar}>
-        {services && services.map((service) => (
-          <ServiceCard
-            id={service.id}
-            key={service.id}
+        {categories && categories.map((category) => (
+          <CategoryCard
+            key={category.id}
+            category={category}
             variant='wide'
-            src={service.imageUrl}
-            serviceName={service.serviceName}
           />
         ))}
       </div>

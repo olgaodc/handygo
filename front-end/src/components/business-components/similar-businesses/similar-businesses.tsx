@@ -1,11 +1,11 @@
 import Modal from '@/components/modal/modal';
 import PrimaryButton from '@/components/primary-button/primary-button';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { ReactSVG } from 'react-svg';
 import BookIcon from '@/assets/book-icon.svg';
-import ApiService from '@/services/api-service';
 import { Business } from '@/types/business';
 import BusinessCard from '@/components/business-components/business-card/business-card';
+import useBusinessesByCategory from '@/hooks/use-businesses-by-category';
 import styles from './styles.module.scss';
 
 interface Props {
@@ -14,31 +14,18 @@ interface Props {
 }
 
 const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {
-  const [businesses, setBusinesses] = useState<Business[]>();
+  const { data } = useBusinessesByCategory(activeCategory);
+  const businesses = data ?? [];
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
 
-  const fetchSimilarBusinesses = async () => {
-    try {
-      const response = await ApiService.get(`/businesses/category/${activeCategory}`);
-      const { businesses: businessData } = response.data;
+  const filteredBusinesses = businesses.filter(
+    (business: Business) => business.id !== businessId,
+  );
 
-      const filteredBusinesses = businessData.filter(
-        (business: Business) => business.id !== businessId,
-      );
-
-      setBusinesses(filteredBusinesses);
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchSimilarBusinesses();
-  }, []);
+  const limitedBusinesses = filteredBusinesses.slice(0, 4);
 
   return (
     <>
@@ -53,12 +40,12 @@ const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {
           </div>
         </PrimaryButton>
 
-        {businesses && businesses.length > 0 && (
+        {limitedBusinesses && limitedBusinesses.length > 0 && (
         <div className={styles.similarBusinessesWrapper}>
           <h3 className={styles.title}>Similar Businesses</h3>
 
           <div className={styles.similarBusinesses}>
-            {businesses.map((business) => {
+            {limitedBusinesses.map((business) => {
               return (
                 <BusinessCard
                   key={business.id}
@@ -79,7 +66,6 @@ const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {
         closeModal={closeModal}
       />
     </>
-
   );
 };
 

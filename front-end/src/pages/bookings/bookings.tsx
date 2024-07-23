@@ -37,7 +37,6 @@ const BookingsPage = () => {
             : (
               <>
                 <div className={styles.buttonsWrapper}>
-                  {/* TODO: Buttons witch shows bookings by status */}
                   <span className={styles.button}>Booked</span>
                   <span className={styles.disabledButton}>Completed</span>
                 </div>

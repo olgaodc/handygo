@@ -50,7 +50,7 @@ export const ADD_BUSINESS = async (req: Request, res: Response) => {
       return res.status(400).json({ response: 'Images array cannot be empty' });
     }
 
-    const categoryExists = await CategoryModel.findOne({ serviceName: category });
+    const categoryExists = await CategoryModel.findOne({ categoryName: category });
     if (!categoryExists) {
       return res.status(404).json({ message: 'Category does not exist.' });
     }

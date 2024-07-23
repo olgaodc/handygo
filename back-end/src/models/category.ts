@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const categorySchema = new mongoose.Schema({
   id: { type: String, required: true, minlength: 3 },
-  serviceName: {
+  categoryName: {
     type: String, required: true, unique: true, minlength: 3,
   },
   imageUrl: { type: String, required: true, minlength: 10 },
-  bgColor: { type: String, required: true, match: /^\d{6}$/ },
+  bgColor: { type: String, required: true, minlength: 6 },
   creationDate: { type: Date, required: true },
 });
 

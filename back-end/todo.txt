@@ -1,9 +1,0 @@
-1. pakeist ir panaikinti _id ir -v;
-2. susikurti config-env-variables;
-3. issikelt connect-to-db funkcija;
-4. sukurti kiekvienai funkcijai atskira faila
-5. sukurti update ir delete user funkcijas?
-
-Extra:
-* isirasyti swageri
-

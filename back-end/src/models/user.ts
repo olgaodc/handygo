@@ -23,14 +23,6 @@ const userSchema = new mongoose.Schema<IUser>(
   {
     timestamps: true,
     versionKey: false,
-    // toJSON: {
-    //   transform: (doc, ret) => {
-    //     ret.id = ret._id;
-    //     delete ret._id;
-    //     return ret;
-    //   }
-    // },
-    // toObject: { virtuals: true }, // Jei norite to paties ir su toObject
   },
 );
 
