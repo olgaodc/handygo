@@ -1,11 +1,13 @@
 import clsx from 'clsx';
 import React, { FC } from 'react';
-import useLikeCard from '@/hooks/use-like-card';
+// import useLikeCard from '@/hooks/use-like-card';
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
 import { Business } from '@/types/business';
 import { ReactSVG } from 'react-svg';
 import HeartIcon from '@/assets/heart-icon.svg';
+import useLikedCards from '@/store/use-like-card';
+import useAuth from '@/store/use-auth';
 import PrimaryButton from '../../primary-button/primary-button';
 import styles from './styles.module.scss';
 
@@ -16,7 +18,8 @@ interface Props {
 }
 
 const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) => {
-  const { addLikedCard, removeLikedCard, isCardLiked } = useLikeCard();
+  const { user } = useAuth();
+  const { toggleLikedCard, isCardLiked } = useLikedCards();
   const path = routes.BUSINESS_ID.url(business.id);
 
   const navigate = useNavigate();
@@ -25,16 +28,22 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
     navigate(path);
   };
 
-  // TODO: TIKRINTI NE CIA!!!
   const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     event.preventDefault();
-    if (isCardLiked(business.id)) {
-      removeLikedCard(business.id);
-    } else {
-      addLikedCard(business.id);
-    }
+    toggleLikedCard(business.id);
   };
+
+  // TODO: TIKRINTI NE CIA!!!
+  // const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
+  //   event.stopPropagation();
+  //   event.preventDefault();
+  //   if (isCardLiked(business.id)) {
+  //     removeLikedCard(business.id);
+  //   } else {
+  //     addLikedCard(business.id);
+  //   }
+  // };
 
   return (
     <Link
@@ -46,6 +55,7 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
         isCardLiked(business.id) && styles.liked,
       )}
     >
+      {user && (
       <button
         type='button'
         className={styles.likeBtn}
@@ -53,6 +63,7 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
       >
         <ReactSVG className={styles.icon} src={HeartIcon} />
       </button>
+      )}
       <div className={styles.images}>
         <img
           key={business.images[0]._id}

@@ -46,7 +46,7 @@ const BookingForm = ({ closeModal }: Props) => {
         status: 'pending',
       };
 
-      await bookService(bookingData);
+      bookService(bookingData);
     }
   };
 
