@@ -1,22 +1,18 @@
 import routes from '@/navigation/routes';
-import { RegisterFormValues } from '@/types/register-types';
+import { initialValues, RegisterFormValues } from '@/types/register';
 import { useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import RegisterValidationSchema from '@/formik-validation/register-validation-schema';
 import { useEffect } from 'react';
 import useRegister from '@/store/use-register';
+import useAuth from '@/store/use-auth';
 import Container from '../container/container';
 import FormikInput from '../formik-input/formik-input';
 import styles from './styles.module.scss';
 
-const initialValues: RegisterFormValues = {
-  name: '',
-  email: '',
-  password: '',
-};
-
 const RegisterForm = () => {
-  const { register, user, error } = useRegister();
+  const { register, error } = useRegister();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (values: RegisterFormValues) => {
@@ -25,7 +21,7 @@ const RegisterForm = () => {
 
   useEffect(() => {
     if (user !== null) {
-      navigate(routes.LOGIN);
+      navigate(routes.HOME);
     }
   }, [user]);
 
@@ -56,7 +52,12 @@ const RegisterForm = () => {
                   type='password'
                   placeholder='Password'
                 />
-                {error && <div className={styles.error}>{error}</div>}
+                <FormikInput
+                  name='confirmPassword'
+                  type='password'
+                  placeholder='Confirm password'
+                />
+
                 <button
                   className={styles.button}
                   type='submit'
@@ -64,6 +65,7 @@ const RegisterForm = () => {
                 >
                   Crate account
                 </button>
+                {error && <div className={styles.error}>{error}</div>}
               </Form>
             )}
           </Formik>

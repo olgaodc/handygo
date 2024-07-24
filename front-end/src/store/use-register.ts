@@ -1,25 +1,10 @@
 import { create } from 'zustand';
 import ApiService from '@/services/api-service';
-import { User } from '@/types/user';
 import { persist } from 'zustand/middleware';
-
-interface RegisterState {
-  user: User | null;
-  error: string | null;
-}
-
-interface RegisterActions {
-  register: (name: string, email: string, password: string) => Promise<void>;
-}
-
-interface RegisterResponse {
-  user: User;
-}
-
-const initialState: RegisterState = {
-  user: null,
-  error: null,
-};
+import {
+  initialState, RegisterActions, RegisterResponse, RegisterState,
+} from '@/types/register';
+import useAuth from './use-auth';
 
 const userRegister = create<RegisterState & RegisterActions>()(persist(
   (set) => ({
@@ -33,11 +18,15 @@ const userRegister = create<RegisterState & RegisterActions>()(persist(
         });
 
         if (response.status === 201) {
-          const { user } = response.data;
-          set({ user });
+          const { login } = useAuth.getState();
+          await login(email, password);
         }
-      } catch (err) {
-        set({ error: 'Registration failed. Please try again.' });
+      } catch (err: any) {
+        if (err.response && err.response.status === 400) {
+          set({ error: 'User already exists' });
+        } else {
+          set({ error: 'Something went wrong. Please try again later.' });
+        }
       }
     },
   }),

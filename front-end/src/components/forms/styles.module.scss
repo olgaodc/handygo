@@ -51,6 +51,12 @@
         color: $primary-color;
       }
     }
+
+    .error {
+      color: $danger-color;
+      font-size: 18px;
+      font-weight: 500;
+    }
   }
 }
 

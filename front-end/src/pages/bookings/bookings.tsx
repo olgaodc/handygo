@@ -6,14 +6,12 @@ import styles from './styles.module.scss';
 
 const BookingsPage = () => {
   const { user } = useAuth();
+  const { data, isLoading } = useUserBookings(user?.email ?? '');
+  const bookings = data ?? [];
 
   if (!user) {
-    return <div>Please log in to see your bookings.</div>;
+    return <div className={styles.notLoggedInError}>Please log in to see your bookings.</div>;
   }
-
-  const userEmail = user.email;
-  const { data, isLoading } = useUserBookings(userEmail);
-  const bookings = data ?? [];
 
   // TODO: On click show bookings by status
   // const handleBooked = () => {
@@ -26,29 +24,32 @@ const BookingsPage = () => {
   //   const completedBookings = bookings?.filter((booking) => booking.status === 'completed');
   //   console.log(completedBookings);
   // };
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.content}>
       <Container>
         <section className={styles.bookingsWrapper}>
           <h2 className={styles.title}>My bookings</h2>
-          {isLoading
-            ? <div>Loading...</div>
-            : (
-              <>
+          {bookings.length > 0
+            ? (
+              <div>
                 <div className={styles.buttonsWrapper}>
                   <span className={styles.button}>Booked</span>
                   <span className={styles.disabledButton}>Completed</span>
                 </div>
                 <div className={styles.bookingsSection}>
-                  {bookings ? (bookings.map((booking) => {
+                  {bookings.map((booking) => {
                     return (
                       <BookingCard key={booking.id} booking={booking} />
                     );
-                  })) : <div>You haven&apos;t made any bookings yet.</div>}
+                  })}
                 </div>
-              </>
-            )}
+              </div>
+            ) : <div>You haven&apos;t made any bookings yet.</div>}
+
         </section>
       </Container>
     </div>

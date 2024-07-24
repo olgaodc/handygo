@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema<IUser>(
     email: {
       type: String, required: true, unique: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     },
-    password: { type: String, required: true, unique: true },
+    password: { type: String, required: true, match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/ },
   },
   {
     timestamps: true,

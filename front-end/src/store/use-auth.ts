@@ -1,29 +1,9 @@
 import ApiService from '@/services/api-service';
-import { User } from '@/types/user';
+import {
+  AuthActions, AuthResponse, AuthState, initialState,
+} from '@/types/login';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-interface AuthState {
-  user: User | null;
-  token: string | null;
-  error: string | null;
-}
-
-interface AuthActions {
-  login: (email: string, password: string) => Promise<void>;
-  logout: () => void;
-}
-
-type AuthResponse = {
-  token: string;
-  userWithoutPassword: User;
-};
-
-const initialState: AuthState = {
-  user: null,
-  token: null,
-  error: null,
-};
 
 const useAuth = create<AuthState & AuthActions>()(persist((set) => ({
   ...initialState,
@@ -34,12 +14,15 @@ const useAuth = create<AuthState & AuthActions>()(persist((set) => ({
         password,
       });
       if (response.status === 200) {
-        const { userWithoutPassword: user } = response.data;
-        const { token } = response.data;
+        const { userWithoutPassword: user, token } = response.data;
         set({ user, token });
       }
-    } catch {
-      set({ error: 'Login failed. Please try again.' });
+    } catch (err: any) {
+      if (err.response && err.response.status === 401) {
+        set({ error: 'Incorrect email or password' });
+      } else {
+        set({ error: 'Something went wrong. Please try again later.' });
+      }
     }
   },
   logout: () => {

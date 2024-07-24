@@ -6,6 +6,14 @@
   right: 0;
   background: $white-color;
   padding: 30px;
+  overflow-y: auto;
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+
+  &:hover {
+    scrollbar-color: $light-grey-color transparent;
+  }
+ 
 }
 
 .modalOverlay {

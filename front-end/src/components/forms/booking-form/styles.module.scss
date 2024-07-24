@@ -44,6 +44,10 @@
 
       &.react-datepicker__day--disabled {
         color: $light-grey-color;
+
+        &.react-datepicker__day--today {
+          color: $primary-color;
+        }
       }
 
       &.react-datepicker__day--keyboard-selected {        
@@ -132,11 +136,10 @@
   }
 
   .message {
-    text-align: center;
     color: $success-color;
     font-weight: 500;
     font-size: 20px;
-    margin: 20px 0 0;
+    margin: 0 0 25px;
   }
 }
 

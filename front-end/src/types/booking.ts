@@ -19,3 +19,21 @@ export interface Booking {
   businessInfo: BusinessInfo[],
   status: string,
 }
+
+export interface BookingFormValues {
+  businessId: string,
+  date: string,
+  time: string,
+  userEmail: string,
+  userName: string,
+  status: string,
+}
+
+export const initialValues: BookingFormValues = {
+  businessId: '',
+  date: '',
+  time: '',
+  userEmail: '',
+  userName: '',
+  status: 'pending',
+};

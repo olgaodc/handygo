@@ -16,7 +16,7 @@ const BusinessesSection: FC<BusinessSectionProps> = ({ shouldFilter = false }) =
   const filteredBusinesses = shouldFilter && activeCategory
     ? businesses?.filter((business) => business.category.toLowerCase()
     === activeCategory.toLowerCase())
-    : businesses;
+    : businesses.slice(0, 8);
 
   return (
     <div className={styles.section}>

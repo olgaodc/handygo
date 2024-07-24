@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { BookingFormValues } from '@/types/booking-form-values';
+import { BookingFormValues, initialValues } from '@/types/booking';
 import { Form, Formik } from 'formik';
 import useBooking from '@/hooks/use-booking';
 import useAuth from '@/store/use-auth';
 import { useParams } from 'react-router-dom';
-import { format } from 'date-fns';
+import { addDays, format } from 'date-fns';
 import bookingValidationSchema from '@/formik-validation/booking-validation-schema';
 import { useEffect, useState } from 'react';
 import { ReactSVG } from 'react-svg';
@@ -18,15 +18,6 @@ import PrimaryButton from '../../primary-button/primary-button';
 interface Props {
   closeModal: () => void;
 }
-
-const initialValues: BookingFormValues = {
-  businessId: '',
-  date: '',
-  time: '',
-  userEmail: '',
-  userName: '',
-  status: 'pending',
-};
 
 const BookingForm = ({ closeModal }: Props) => {
   const { id: businessId } = useParams<{ id: string }>();
@@ -59,6 +50,8 @@ const BookingForm = ({ closeModal }: Props) => {
     }
   };
 
+  const tomorrow = addDays(new Date(), 1);
+
   return (
     <Formik
       initialValues={initialValues}
@@ -81,7 +74,7 @@ const BookingForm = ({ closeModal }: Props) => {
               selected={values.date ? new Date(values.date) : null}
               onChange={(date) => setFieldValue('date', date ? format(date, 'dd-MMM-yyyy') : '')}
               inline
-              minDate={new Date()}
+              minDate={tomorrow}
             />
             {touched.date && errors.date && <div className={styles.error}>{errors.date}</div>}
           </div>
@@ -101,9 +94,8 @@ const BookingForm = ({ closeModal }: Props) => {
             </div>
             {touched.time && errors.time && <div className={styles.error}>{errors.time}</div>}
           </div>
-
-          <PrimaryButton type='submit' disabled={isSubmitting}>Book Now</PrimaryButton>
           {message && <p className={styles.message}>{message}</p>}
+          <PrimaryButton type='submit' disabled={isSubmitting}>Book Now</PrimaryButton>
         </Form>
       )}
     </Formik>

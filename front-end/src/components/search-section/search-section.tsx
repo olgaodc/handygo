@@ -27,7 +27,6 @@ const SearchSection = () => {
             />
             <PrimaryButton
               variant='round'
-              // TODO: Add functionality
             >
               <img
                 className={styles.searchIcon}

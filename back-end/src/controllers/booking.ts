@@ -6,11 +6,6 @@ export const GET_USER_BOOKINGS = async (req: Request, res: Response) => {
   try {
     const { email } = req.params;
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      return res.status(400).json({ response: 'Invalid email format' });
-    }
-
     const bookings = await BookingModel.aggregate([
       { $match: { userEmail: email } },
       {
@@ -22,10 +17,6 @@ export const GET_USER_BOOKINGS = async (req: Request, res: Response) => {
         },
       },
     ]);
-
-    if (bookings.length === 0) {
-      return res.status(404).json({ response: 'Bookings not found' });
-    }
 
     return res.status(200).json({ bookings });
   } catch (err) {

@@ -1,5 +1,5 @@
 import routes from '@/navigation/routes';
-import { LoginFormValues } from '@/types/login-types';
+import { initialValues, LoginFormValues } from '@/types/login';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import loginValidationSchema from '@/formik-validation/login-validation-schema';
@@ -8,11 +8,6 @@ import useAuth from '@/store/use-auth';
 import Container from '../container/container';
 import FormikInput from '../formik-input/formik-input';
 import styles from './styles.module.scss';
-
-const initialValues: LoginFormValues = {
-  email: '',
-  password: '',
-};
 
 const LoginForm = () => {
   const { login, error, user } = useAuth();
