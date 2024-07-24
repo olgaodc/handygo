@@ -1,6 +1,18 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-const businessSchema = new mongoose.Schema({
+interface IBusiness extends Document {
+  id: string;
+  businessName: string;
+  description: string;
+  address: string;
+  category: string;
+  person: string;
+  email: string;
+  images: { url: string; alt?: string }[];
+  creationDate: Date;
+}
+
+const businessSchema = new Schema<IBusiness>({
   id: { type: String, required: true, minlength: 3 },
   businessName: { type: String, required: true, minlength: 3 },
   description: { type: String, required: true, minlength: 10 },
@@ -15,6 +27,6 @@ const businessSchema = new mongoose.Schema({
   creationDate: { type: Date, required: true },
 });
 
-const BusinessModel = mongoose.model('Business', businessSchema);
+const BusinessModel = mongoose.model<IBusiness>('Business', businessSchema);
 
 export default BusinessModel;

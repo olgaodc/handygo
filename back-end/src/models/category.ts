@@ -1,6 +1,14 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-const categorySchema = new mongoose.Schema({
+interface ICategory extends Document {
+  id: string;
+  categoryName: string;
+  imageUrl: string;
+  bgColor: string;
+  creationDate: Date;
+}
+
+const categorySchema = new Schema<ICategory>({
   id: { type: String, required: true, minlength: 3 },
   categoryName: {
     type: String, required: true, unique: true, minlength: 3,
@@ -10,5 +18,5 @@ const categorySchema = new mongoose.Schema({
   creationDate: { type: Date, required: true },
 });
 
-const CategoryModel = mongoose.model('Category', categorySchema);
+const CategoryModel = mongoose.model<ICategory>('Category', categorySchema);
 export default CategoryModel;

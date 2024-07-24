@@ -1,6 +1,17 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 
-const bookingSchema = new mongoose.Schema({
+interface IBooking extends Document {
+  id: string;
+  businessId: string;
+  date: string;
+  time: string;
+  userEmail: string;
+  userName: string;
+  status: 'confirmed' | 'pending' | 'cancelled' | 'completed';
+  creationDate: Date;
+}
+
+const bookingSchema = new Schema<IBooking>({
   id: { type: String, required: true, minlength: 3 },
   businessId: { type: String, required: true, minlength: 3 },
   date: { type: String, required: true, minlength: 10 },
@@ -11,11 +22,10 @@ const bookingSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ['confirmed', 'pending', 'cancelled', 'completed'],
-    minlength: 5,
   },
   creationDate: { type: Date, required: true },
 });
 
-const BookingModel = mongoose.model('Booking', bookingSchema);
+const BookingModel = mongoose.model<IBooking>('Booking', bookingSchema);
 
 export default BookingModel;

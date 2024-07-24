@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-interface IUser extends mongoose.Document {
+interface IUser extends Document {
   id: string;
   name: string;
   age?: number;
@@ -10,7 +10,7 @@ interface IUser extends mongoose.Document {
   isCorrectPassword: (password: string) => Promise<boolean>;
 }
 
-const userSchema = new mongoose.Schema<IUser>(
+const userSchema = new Schema<IUser>(
   {
     id: { type: String, required: true, unique: true },
     name: { type: String, required: true },
