@@ -13,17 +13,6 @@ const BookingsPage = () => {
     return <div className={styles.notLoggedInError}>Please log in to see your bookings.</div>;
   }
 
-  // TODO: On click show bookings by status
-  // const handleBooked = () => {
-  //   const bookedBookings = bookings?.filter((booking) =>
-  // booking.status === 'confirmed' || booking.status === 'pending');
-  //   console.log(bookedBookings);
-  // };
-
-  // const handleCompleted = () => {
-  //   const completedBookings = bookings?.filter((booking) => booking.status === 'completed');
-  //   console.log(completedBookings);
-  // };
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -49,7 +38,6 @@ const BookingsPage = () => {
                 </div>
               </div>
             ) : <div>You haven&apos;t made any bookings yet.</div>}
-
         </section>
       </Container>
     </div>

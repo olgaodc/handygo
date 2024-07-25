@@ -4,9 +4,13 @@
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1490196078) -0.05px 1.95px 12.6px;
   height: 450px;
-  width: 300px;
   transition: all 0.3s;
   position: relative;
+
+  @include small {
+    height: unset;
+    width: 240px;
+  }
 
   &.liked {
     .likeBtn {
@@ -56,6 +60,10 @@
     object-fit: cover;
     border-radius: 20px 20px 0 0;
     display: block;
+
+    @include small {
+      height: 150px;
+    }
   }
 
   .cardInfo {
@@ -64,6 +72,10 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
+
+    @include small {
+      gap: 10px;
+    }
 
     .category {
       color: $primary-color;

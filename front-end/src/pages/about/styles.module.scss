@@ -6,14 +6,47 @@
     align-items: flex-start;
     gap: 50px;
 
-    .aboutTitle {
-      font-size: 36px;
-      margin: 0 0 20px;
+    @include large {
+      position: relative;
+    }
+
+    @include medium {
+      flex-direction: column-reverse;
+      align-items: center;   
+      gap: 40px;
+    }
+
+    .about {
+      @include large {
+        max-width: calc(100% - 300px);
+      }
+
+      @include medium {
+        max-width: 100%;
+      }
+
+      .aboutTitle {
+        font-size: 36px;
+        margin: 0 0 20px;
+      }
     }
 
     .aboutImage {
       max-width: 440px;
+
+      @include large {
+        position: absolute;
+        right: 0;
+        max-width: 280px;
+      }
+
+      @include medium {
+        position: relative;
+        max-width: 340px;
+      }
     }
+
+
 
     .history {
       margin: 50px 0;
@@ -28,7 +61,7 @@
   .trusted {
 
     .title {
-      margin: 0 0 20px;
+      margin: 0 0 30px;
       font-size: 32px;
       text-align: center;
     }
@@ -36,13 +69,23 @@
     .trustedImages {
       max-width: 1000px;
       margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      justify-items: center;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
       gap: 50px;
 
+      @include medium {
+        gap: 40px;
+      }
+
       img {
-        width: 200px;
-        height: 90px;
+        max-width: 200px;
+        max-height: 90px;
+
+        @include medium {
+          max-width: 160px;
+          max-height: 70px;
+        }
       }
     }
   }
@@ -52,3 +95,4 @@
     line-height: 130%;
   }
 }
+

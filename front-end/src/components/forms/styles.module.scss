@@ -1,7 +1,11 @@
 .content {
   background-color: $light-grey-bg;
-  height: 100%;
-  padding-top: 100px;
+  min-height: calc(100vh - 112px);
+  padding: 100px 0 50px;
+
+  @include small {
+    padding: 50px 0;
+  }
 
   .form {
     background-color: $white-color;

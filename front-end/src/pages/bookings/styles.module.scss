@@ -29,10 +29,15 @@
   }
 
   .bookingsSection {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
     gap: 20px;
     margin-top: 20px;
+
+    @include small {
+      grid-template-columns: 280px;
+      justify-content: center;
+    }
   }
 }
 

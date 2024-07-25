@@ -12,7 +12,7 @@ const SearchPage = () => {
         <Sidebar />
         <section className={styles.bsWrapper}>
           <h2 className={styles.bsTitle}>{category}</h2>
-          <BusinessesSection shouldFilter />
+          <BusinessesSection shouldFilter variant='flexStart' />
         </section>
       </div>
     </Container>

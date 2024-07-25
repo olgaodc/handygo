@@ -6,6 +6,9 @@ import BookIcon from '@/assets/book-icon.svg';
 import { Business } from '@/types/business';
 import BusinessCard from '@/components/business-components/business-card/business-card';
 import useBusinessesByCategory from '@/hooks/use-businesses-by-category';
+import useAuth from '@/store/use-auth';
+import { useNavigate } from 'react-router-dom';
+import routes from '@/navigation/routes';
 import styles from './styles.module.scss';
 
 interface Props {
@@ -14,11 +17,20 @@ interface Props {
 }
 
 const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const { data } = useBusinessesByCategory(activeCategory);
   const businesses = data ?? [];
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = () => setModalIsOpen(true);
+  const handleBook = () => {
+    if (user) {
+      setModalIsOpen(true);
+    } else {
+      navigate(routes.LOGIN);
+    }
+  };
+
   const closeModal = () => setModalIsOpen(false);
 
   const filteredBusinesses = businesses.filter(
@@ -31,7 +43,7 @@ const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {
     <>
       <div className={styles.section}>
         <PrimaryButton
-          onClick={openModal}
+          onClick={handleBook}
           variant='primary'
         >
           <div className={styles.buttonChild}>

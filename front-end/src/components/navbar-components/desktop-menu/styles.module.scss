@@ -1,0 +1,8 @@
+.desktopMenu {
+  display: flex;
+  gap: 10px;
+
+  @include medium {
+    display: none;
+  }
+}

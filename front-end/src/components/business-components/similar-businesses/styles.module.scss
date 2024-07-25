@@ -3,6 +3,22 @@
   display: flex;
   flex-direction: column;
 
+  @include large {
+    width: 100%;
+  }
+
+  button {
+    @include large {
+      align-self: self-start;
+    }
+  }
+
+  .title {
+    @include large {
+      margin-top: 50px;
+    }
+  }
+
   .buttonChild {
     display: flex;
     align-items: center;
@@ -23,5 +39,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include large {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 }

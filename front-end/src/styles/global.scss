@@ -1,4 +1,5 @@
 @forward './colors';
+@forward './responsive';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -7,4 +8,5 @@
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
+  min-width: 360px;
 }

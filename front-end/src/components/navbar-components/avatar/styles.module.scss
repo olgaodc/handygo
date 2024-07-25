@@ -14,6 +14,11 @@
     cursor: pointer;
     transition: all 0.3s; 
 
+    @include medium {
+      padding: 14px 18px;
+      font-size: 18px;
+    }
+
     &:hover {
       background-color: $primary-hover-color;
     }
@@ -23,6 +28,10 @@
     position: relative;
     display: flex;
     justify-content: center;
+
+    @include medium {
+      justify-content: flex-end;
+    }
   }
 }
 

@@ -10,6 +10,14 @@
   scrollbar-color: transparent transparent;
   scrollbar-width: thin;
 
+  @include small {
+    width: 100%;
+  }
+
+  @include extra-small {
+    padding: 15px;
+  }
+
   &:hover {
     scrollbar-color: $light-grey-color transparent;
   }

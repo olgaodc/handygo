@@ -2,8 +2,16 @@
   display: flex;
   gap: 50px;
 
+  @include large {
+    flex-direction: column;
+  }
+
   .section {
     width: 70%;
+
+    @include large {
+      width: 100%;
+    }
 
     .descriptionWrapper {
       margin-bottom: 50px;
@@ -20,6 +28,7 @@
 
     .galleryImages {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
     
       .galleryImage {
@@ -28,7 +37,5 @@
         border-radius: 8px;
       }
     }
-  }
-
-  
+  }  
 }

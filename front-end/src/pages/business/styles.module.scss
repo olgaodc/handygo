@@ -1,3 +1,7 @@
 .section {
   margin: 80px 0;
+
+  @include medium {
+    margin: 50px 0 0;
+  }
 }
