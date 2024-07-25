@@ -20,20 +20,13 @@
       }
 
       &:focus-visible {
-        outline-color: #8056eb;
+        outline-color: $primary-color;
       }
     }
 
-    .searchButton {
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 19px;
-
-      img {
-        height: 22px;
-      }
+    .searchIcon {
+      height: 22px;
     }
   }
 }
+

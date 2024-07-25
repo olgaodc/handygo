@@ -1,0 +1,25 @@
+ .sectionWrapper {
+  display: flex;
+  justify-content: center;
+
+  .section {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+
+    @include small {
+      justify-items: center;
+    }
+  }
+
+  &.flexStart {
+    display: flex;
+    justify-content: flex-start;
+
+    @include large {
+      justify-content: center;
+    }
+  }
+ }
+

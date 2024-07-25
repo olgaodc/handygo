@@ -3,8 +3,21 @@
   display: flex;
   gap: 40px;
 
-  .bsTitle {
-    margin: 0 0 32px;
-    text-transform: capitalize;
+  @include large {
+    flex-direction: column;
+  }
+
+  .bsWrapper {
+    width: 75%;
+
+    @include large {
+      width: 100%;
+    }
+
+    .bsTitle {
+      margin: 0 0 32px;
+      text-transform: capitalize;
+    }
   }
 }
+

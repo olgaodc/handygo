@@ -1,0 +1,41 @@
+.sectionWrapper {
+  display: flex;
+  gap: 50px;
+
+  @include large {
+    flex-direction: column;
+  }
+
+  .section {
+    width: 70%;
+
+    @include large {
+      width: 100%;
+    }
+
+    .descriptionWrapper {
+      margin-bottom: 50px;
+    }
+
+    .title {
+      font-size: 26px;
+    }
+
+    .description {
+      line-height: 140%;
+      margin: 0;
+    }
+
+    .galleryImages {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    
+      .galleryImage {
+        width: 180px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+  }  
+}

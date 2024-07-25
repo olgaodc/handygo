@@ -1,0 +1,17 @@
+.listItem {
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: #323232;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.active {
+  color: $primary-color;
+}

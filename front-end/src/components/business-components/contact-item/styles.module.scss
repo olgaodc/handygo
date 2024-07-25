@@ -1,0 +1,37 @@
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $darker-grey-color;
+  font-size: 18px;
+
+
+
+  &.special {
+    color: $primary-color;
+
+    .icon {
+      svg path {
+        fill: $primary-color;
+      }
+    }
+  }
+
+  .icon {  
+    svg {
+      height: 20px;
+      width: 20px;
+
+      path{
+        fill: $darker-grey-color;
+      }
+    }
+
+    &.primary {
+      svg path {
+        fill: $primary-color;
+      }
+    }
+  }
+
+}

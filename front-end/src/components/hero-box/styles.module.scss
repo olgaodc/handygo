@@ -11,13 +11,18 @@
     text-align: center;
     line-height: 140%;
 
+    @include small {
+      font-size: 42px;
+    }
+
     span {
-      color: #8056eb;
+      color: $primary-color;
     }
   }
 
   .subtitle {
-    color: #a8a8a8;
+    text-align: center;
+    color: $grey-text-color;
     font-size: 24px;
     font-weight: 400;
     margin: 0 0 40px;

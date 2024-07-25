@@ -1,0 +1,95 @@
+.card {
+  text-decoration: none;
+  background-color: $service-card-color;
+  color: $medium-blue-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  height: 120px;
+  width: 160px;
+  border-radius: 8px;
+  transition: background-color, color 0.3s;
+
+  @include small {
+    height: 100px;
+    width: 120px;
+    gap: 10px;
+  }
+
+  @include extra-small {
+    width: 100%;
+  }  
+
+  &:hover {
+    background-color: $service-card-hover-color;
+    color: $primary-color;
+  }
+
+  .image {
+    height: 48px;
+
+    @include small {
+      height: 35px;
+    }
+  }
+
+  .text {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+
+    @include small {
+      font-size: 16px;
+    }
+  }
+
+  &.wide {
+    color: $black-color;
+    border: 2px solid #e6e6e6;
+    background-color: $white-color;
+    border-radius: 20px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: unset;
+
+    @include large {
+      width: 160px;
+      justify-content: center;
+    }
+
+    .image {
+      height: 48px;
+
+      @include large {
+        height: 25px;
+      }
+    }
+
+    .text {
+      font-size: 20px;
+      font-weight: 500;
+
+      @include large {
+        font-size: 18px;
+      }
+    }
+
+    &:hover {
+      background-color: $service-card-color;
+      border-color: $light-blue-border-color;
+      color: $primary-color;
+    }
+  }
+
+  &.active {
+    background-color: $service-card-color;
+    border-color: $light-blue-border-color;
+    color: $primary-color;
+  }
+}

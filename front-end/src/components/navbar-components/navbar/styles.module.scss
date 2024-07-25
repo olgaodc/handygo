@@ -1,0 +1,40 @@
+.navbarWrapper {
+  border-bottom: 2px solid #f1f1f1;
+
+  .navbar {
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbarList {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .logoImage {
+        display: block;
+
+        @include medium {
+          width: 130px;
+        }
+      }
+    }
+    
+    .largeBtnText {
+      display: block;
+
+      @include small {
+        display: none;
+      }
+    }
+
+    .smallBtnText {
+      display: none;
+
+      @include small {
+        display: block;
+      }
+    }
+  }  
+}

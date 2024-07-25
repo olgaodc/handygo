@@ -1,0 +1,154 @@
+:global {
+  .react-datepicker {
+    background-color: $white-color;
+    border: 1px solid #F3F3F3;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    padding: 15px;
+
+    .react-datepicker__navigation {
+      top: 20px;
+    }
+
+    .react-datepicker__header {
+      border-bottom: none;
+      background-color: $white-color;
+
+      .react-datepicker__current-month {
+        font-size: 18px;
+        font-weight: 500;
+        padding: 0 0 15px;
+        color: $darker-grey-color;
+      }
+    }
+
+    .react-datepicker__day-name {
+      margin: 2px;
+      padding: 8px;
+      width: 35px;
+      font-weight: 500;
+      color: $darker-grey-color;
+    }
+
+    .react-datepicker__month {
+      margin: 0;
+    }
+
+    .react-datepicker__day{
+      margin: 2px;
+      padding: 8px;
+      width: 35px;
+      color: $darker-grey-color;
+      border-radius: 8px;
+
+      &.react-datepicker__day--disabled {
+        color: $light-grey-color;
+
+        &.react-datepicker__day--today {
+          color: $primary-color;
+        }
+      }
+
+      &.react-datepicker__day--keyboard-selected {        
+        color: $white-color;
+        background-color: $primary-color;
+      }
+
+      &.react-datepicker__day--outside-month {
+        color: $light-grey-color;
+      }
+
+      &.react-datepicker__day--selected {
+        color: $white-color;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+.form {
+  .closeButton {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  
+    svg {
+      height: 20px;
+      width: 20px;    
+    }
+  }
+
+  .formTitle {
+    margin: 20px 0 20px;
+  }
+
+  .formDescription {
+    color: $darker-grey-color;
+    font-size: 18px;
+  }
+
+  .datePickerWrapper {
+    .title {
+      color: $darker-grey-color;
+      margin: 25px 0;
+    }
+  }
+
+  .timeSlotsWrapper {
+    margin-bottom: 30px;
+    color: $darker-grey-color;
+
+    .title {
+      margin: 25px 0;
+    }
+  
+    .timeSlots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+      
+    
+      .time {
+        all: unset;
+        padding: 10px 15px;
+        border-radius: 25px;
+        border: 1px solid $modal-light-grey;
+        background-color: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+        cursor: pointer;
+    
+        &:hover {
+          background-color:$modal-light-grey;
+        }
+    
+        &.selected {
+          background-color: $primary-color;
+          color: $white-color;
+        }
+      } 
+    }
+  }
+
+  .message {
+    color: $success-color;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 0 0 25px;
+  }
+}
+
+
+
+
+
+.error {
+  color: $danger-color;
+  font-weight: 500;
+  margin-top: 10px;
+}

@@ -1,0 +1,40 @@
+.card {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #F3F3F3;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+  @include small {
+    flex-direction: column;
+  }
+
+  .image {
+    border-radius: 8px;
+    height: 180px;
+    width: 140px;
+    object-fit: cover;
+
+    @include small {
+      height: 160px;
+      width: 250px;
+    }
+  }
+
+  .cardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .businessName {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .date {
+      color: $black-color;
+      font-weight: 500;
+    }
+  }
+}
