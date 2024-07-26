@@ -20,7 +20,7 @@ server.use(express.json());
 server.use(cors());
 
 server.use(express.json({ limit: '50mb' }));
-server.use(express.static(path.join(__dirname, '../../frontend/dist')));
+server.use(express.static(path.join(__dirname, '../../front-end/dist')));
 
 server.use(categoryRouter);
 server.use(businessRouter);
@@ -28,7 +28,7 @@ server.use(bookingRouter);
 server.use(userRouter);
 
 server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../frontend/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../../front-end/dist', 'index.html'));
 });
 
 mongoose.connect(mongoConnect!)
