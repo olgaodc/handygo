@@ -26,6 +26,16 @@
 
     .searchIcon {
       height: 22px;
+      width: 22px;
+      
+      svg {
+        height: 22px;
+        width: 22px;
+
+        path {
+          fill: $white-color;
+        }
+      }
     }
   }
 }
