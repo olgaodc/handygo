@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import SearchIcon from '@/assets/search-icon.png';
+import SearchIcon from '@/assets/search-icon.svg';
+import { ReactSVG } from 'react-svg';
 import Container from '../container/container';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
@@ -28,11 +29,7 @@ const SearchSection = () => {
             <PrimaryButton
               variant='round'
             >
-              <img
-                className={styles.searchIcon}
-                src={SearchIcon}
-                alt='search icon'
-              />
+              <ReactSVG className={styles.searchIcon} src={SearchIcon} />
             </PrimaryButton>
           </div>
         </section>
