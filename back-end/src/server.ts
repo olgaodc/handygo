@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { config } from 'dotenv';
+import path from 'path';
 import categoryRouter from './routes/category';
 import businessRouter from './routes/business';
 import bookingRouter from './routes/booking';
@@ -18,10 +19,17 @@ const mongoConnect = process.env.MONGO_CONNECT;
 server.use(express.json());
 server.use(cors());
 
+server.use(express.json({ limit: '50mb' }));
+server.use(express.static(path.join(__dirname, '../../frontend/dist')));
+
 server.use(categoryRouter);
 server.use(businessRouter);
 server.use(bookingRouter);
 server.use(userRouter);
+
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend/dist', 'index.html'));
+});
 
 mongoose.connect(mongoConnect!)
   .then(() => console.log('Connected to MongoDB'))
