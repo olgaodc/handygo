@@ -57,7 +57,8 @@
                     ["@/services", "./src/services"],
                     ["@/store", "./src/store"],
                     ["@/api", "./src/api"],
-                    ["@/data", "./src/data"]
+                    ["@/data", "./src/data"],
+                    ["@/consts", "./src/consts"]
                 ]
             },
             "node": {
