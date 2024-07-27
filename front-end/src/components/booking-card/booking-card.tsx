@@ -20,12 +20,14 @@ const BookingCard: FC<Pros> = ({ booking }) => {
       id={booking.id}
       className={styles.card}
     >
-      <img
-        key={businessImage._id}
-        className={styles.image}
-        src={businessImage.url}
-        alt={businessImage.alt || 'Image'}
-      />
+      {business.images && business.images.length > 0 && (
+        <img
+          key={businessImage._id}
+          className={styles.image}
+          src={businessImage.url}
+          alt={businessImage.alt || 'Image'}
+        />
+      )}
       <div className={styles.cardInfo}>
         <h3 className={styles.businessName}>{business.businessName}</h3>
         <ContactItem src={UserIcon} variant='special'>{business.person}</ContactItem>

@@ -1,6 +1,5 @@
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import React, { FC } from 'react';
-// import useLikeCard from '@/hooks/use-like-card';
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
 import { Business } from '@/types/business';
@@ -34,17 +33,6 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
     toggleLikedCard(business.id);
   };
 
-  // TODO: TIKRINTI NE CIA!!!
-  // const handleLike = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   event.stopPropagation();
-  //   event.preventDefault();
-  //   if (isCardLiked(business.id)) {
-  //     removeLikedCard(business.id);
-  //   } else {
-  //     addLikedCard(business.id);
-  //   }
-  // };
-
   return (
     <Link
       to={path}
@@ -60,17 +48,20 @@ const BusinessCard: FC<Props> = ({ business, variant = '', showButton = true }) 
         type='button'
         className={styles.likeBtn}
         onClick={handleLike}
+        data-testid='like-button'
       >
         <ReactSVG className={styles.icon} src={HeartIcon} />
       </button>
       )}
       <div className={styles.images}>
-        <img
-          key={business.images[0]._id}
-          className={styles.image}
-          src={business.images[0].url}
-          alt={business.images[0].alt || 'Image'}
-        />
+        {business.images && business.images.length > 0 && (
+          <img
+            key={business.images[0]._id}
+            className={styles.image}
+            src={business.images[0].url}
+            alt={business.images[0].alt || 'Image'}
+          />
+        )}
       </div>
       <div className={styles.cardInfo}>
         <span className={styles.category}>{business.category}</span>

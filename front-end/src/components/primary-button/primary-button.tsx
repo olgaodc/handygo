@@ -1,5 +1,5 @@
 import React, { FC, ButtonHTMLAttributes } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import styles from './styles.module.scss';
 
 interface PrimaryButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {

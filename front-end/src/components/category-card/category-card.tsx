@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import routes from '@/navigation/routes';
 import { FC } from 'react';
 import { Category } from '@/types/category';
