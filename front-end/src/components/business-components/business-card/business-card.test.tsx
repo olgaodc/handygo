@@ -1,9 +1,19 @@
 import { Business } from '@/types/business';
-import { MemoryRouter, BrowserRouter as Router } from 'react-router-dom';
-import { render, screen } from '@testing-library/react';
+import { BrowserRouter, MemoryRouter, BrowserRouter as Router } from 'react-router-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
+import useAuth from '@/store/use-auth';
+import useLikedCards from '@/store/use-like-card';
 import BusinessCard from './business-card';
 
-// TODO: Test useLikeCard
+jest.mock('@/store/use-auth');
+jest.mock('@/store/use-like-card');
+
+const mockedNavigator = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedNavigator,
+}));
 
 const mockedBusiness: Business = {
   id: 'ask-ln786so=ls',
@@ -40,6 +50,14 @@ const renderComponentWithoutImage = () => render(
 );
 
 describe('<BusinessCard />', () => {
+  beforeEach(() => {
+    (useAuth as unknown as jest.Mock).mockReturnValue({ user: { name: 'Test User' } });
+    (useLikedCards as unknown as jest.Mock).mockReturnValue({
+      toggleLikedCard: jest.fn(),
+      isCardLiked: jest.fn().mockReturnValue(false),
+    });
+  });
+
   test('renders the BusinessCard with all details', () => {
     renderComponent();
 
@@ -51,20 +69,44 @@ describe('<BusinessCard />', () => {
     expect(screen.getByText('Book now')).toBeInTheDocument();
   });
 
-  test('renders link with correct path', () => {
+  test('handleBook navigates to the correct path', () => {
     render(
       <MemoryRouter>
         <BusinessCard business={mockedBusiness} />
       </MemoryRouter>,
     );
 
-    const linkElement = screen.getByRole('link');
-    expect(linkElement).toHaveAttribute('href', '/business/ask-ln786so=ls');
+    const bookButton = screen.getByText('Book now');
+    fireEvent.click(bookButton);
+
+    expect(mockedNavigator).toHaveBeenCalledWith(`/business/${mockedBusiness.id}`);
   });
 
   test('does not render image if images is empty', () => {
     renderComponentWithoutImage();
 
     expect(screen.queryByAltText('two workers fixing roof')).not.toBeInTheDocument();
+  });
+
+  test('like button toggles liked state', () => {
+    const toggleLikedCard = jest.fn();
+    const isCardLiked = jest.fn().mockReturnValue(false);
+
+    (useLikedCards as unknown as jest.Mock).mockReturnValue({
+      toggleLikedCard,
+      isCardLiked,
+    });
+
+    render(
+      <BrowserRouter>
+        <BusinessCard business={mockedBusiness} />
+      </BrowserRouter>,
+    );
+
+    const likeButton = screen.getByTestId('like-button');
+
+    fireEvent.click(likeButton);
+
+    expect(toggleLikedCard).toHaveBeenCalledWith(mockedBusiness.id);
   });
 });

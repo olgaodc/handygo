@@ -37,6 +37,7 @@ const BusinessInfo: FC<BusinessProps> = ({ business }) => {
           <PrimaryButton
             variant='small'
             onClick={sendEmail}
+            data-testid='send-email-button'
           >
             <ReactSVG src={UploadIcon} />
           </PrimaryButton>
