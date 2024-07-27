@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import useBusinesses from '@/hooks/use-businesses';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import styles from './styles.module.scss';
 import BusinessCard from '../business-card/business-card';
 

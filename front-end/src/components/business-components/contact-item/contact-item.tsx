@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import clsx from 'clsx';
+import { clsx } from 'clsx';
 import { ReactSVG } from 'react-svg';
 import styles from './styles.module.scss';
 

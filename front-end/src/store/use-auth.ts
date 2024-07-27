@@ -17,13 +17,13 @@ const useAuth = create<AuthState & AuthActions>()(
         });
         if (response.status === 200) {
           const { userWithoutPassword: user, token } = response.data;
-          set({ user, token });
+          set({ user, token, error: null });
         }
       } catch (err: any) {
         if (err.response && err.response.status === 401) {
-          set({ error: 'Incorrect email or password' });
+          set({ user: null, token: undefined, error: 'Incorrect email or password' });
         } else {
-          set({ error: 'Something went wrong. Please try again later.' });
+          set({ user: null, token: undefined, error: 'Something went wrong. Please try again later.' });
         }
       }
     },

@@ -63,7 +63,7 @@ const RegisterForm = () => {
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  Crate account
+                  Create account
                 </button>
                 {error && <div className={styles.error}>{error}</div>}
               </Form>
