@@ -26,6 +26,10 @@
     justify-content: center;
     align-items: center;
     padding: 19px;
+
+    @include small {
+      padding: 13px;
+    }
   }
 
   &.small {

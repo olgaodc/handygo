@@ -11,7 +11,7 @@ interface BusinessSectionProps {
 }
 
 const BusinessesSection: FC<BusinessSectionProps> = ({ shouldFilter = false, variant = '' }) => {
-  const { data } = useBusinesses();
+  const { data, isLoading } = useBusinesses();
   const businesses = data ?? [];
   const { category: activeCategory } = useParams();
 
@@ -23,10 +23,18 @@ const BusinessesSection: FC<BusinessSectionProps> = ({ shouldFilter = false, var
   return (
     <div className={clsx(styles.sectionWrapper, styles[variant])}>
       <div className={styles.section}>
-        {/* TODO: Fix on loading do not show no data message */}
-        {filteredBusinesses.length > 0 ? filteredBusinesses.map((business) => (
+        {filteredBusinesses.length > 0 && filteredBusinesses.map((business) => (
           <BusinessCard key={business.id} business={business} />
-        )) : <p>No data</p>}
+        ))}
+        {!isLoading && !filteredBusinesses && (
+        <p>
+          No businesses in the
+          {' '}
+          {activeCategory}
+          {' '}
+          category yet.
+        </p>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+.input {
+  font-family: "Roboto", sans-serif;
+  color: #0e0e10;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #dee1e2;
+  border-radius: 30px;
+  height: 60px;
+  width: 300px;
+  transition: border-color 0.3s;
+
+  @include small {
+    padding: 10px;
+    height: unset;
+    font-size: 16px;
+  }
+
+  &:hover {
+    border-color: #ccc;
+  }
+
+  &:focus-visible {
+    outline-color: $primary-color;
+  }
+}
