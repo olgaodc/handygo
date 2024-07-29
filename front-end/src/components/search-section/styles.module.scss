@@ -5,32 +5,27 @@
     align-items: center;
     gap: 15px;
 
-    .input {
-      color: #0e0e10;
-      padding: 1rem;
-      font-size: 1rem;
-      border: 2px solid #dee1e2;
-      border-radius: 30px;
-      height: 60px;
-      width: 300px;
-      transition: border-color 0.3s;
-
-      &:hover {
-        border-color: #ccc;
-      }
-
-      &:focus-visible {
-        outline-color: $primary-color;
-      }
+    @include small {
+      gap: 10px;
     }
 
     .searchIcon {
       height: 22px;
       width: 22px;
+
+      @include small {
+        height: 17px;
+        width: 17px;
+      }
       
       svg {
         height: 22px;
         width: 22px;
+
+        @include small {
+          height: 17px;
+          width: 17px;
+        }
 
         path {
           fill: $white-color;

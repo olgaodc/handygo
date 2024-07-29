@@ -75,7 +75,12 @@
       gap: 50px;
 
       @include medium {
-        gap: 40px;
+        gap: 30px;
+      }
+
+      @include extra-small {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
       }
 
       img {
@@ -85,6 +90,11 @@
         @include medium {
           max-width: 160px;
           max-height: 70px;
+        }
+
+        @include extra-small {
+          max-width: 120px;
+          max-height: 50px;
         }
       }
     }
