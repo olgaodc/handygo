@@ -2,6 +2,7 @@ import BookingCard from '@/components/booking-card/booking-card';
 import Container from '@/components/container/container';
 import useUserBookings from '@/hooks/use-user-bookings';
 import useAuth from '@/store/use-auth';
+import Loader from '@/components/loader/loader';
 import styles from './styles.module.scss';
 
 const BookingsPage = () => {
@@ -14,7 +15,7 @@ const BookingsPage = () => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
@@ -37,7 +38,7 @@ const BookingsPage = () => {
                   })}
                 </div>
               </div>
-            ) : <div>You haven&apos;t made any bookings yet.</div>}
+            ) : <p className={styles.noBookings}>You haven&apos;t made any bookings yet 🙁</p>}
         </section>
       </Container>
     </div>
