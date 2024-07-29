@@ -6,18 +6,20 @@ import Container from '@/components/container/container';
 import useBusinesses from '@/hooks/use-businesses';
 import useCategories from '@/hooks/use-categories';
 import Loader from '@/components/loader/loader';
+import { useState } from 'react';
 import styles from './styles.module.scss';
 
 const HomePage = () => {
   const { isLoading: isBusinessesLoading } = useBusinesses();
   const { isLoading: isCategoriesLoading } = useCategories();
+  const [inputText, setInputText] = useState('');
 
   const isLoading = isBusinessesLoading || isCategoriesLoading;
 
   return (
     <>
       <HeroBox />
-      <SearchSection />
+      <SearchSection shouldNavigate value={inputText} onChange={setInputText} />
       {isLoading ? <Loader /> : (
         <>
           <CategoriesSection />
