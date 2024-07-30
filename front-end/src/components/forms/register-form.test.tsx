@@ -56,16 +56,22 @@ describe('<RegisterForm>', () => {
     renderComponent();
 
     expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Last name')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Username')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('Phone number')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Email')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Confirm password')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /create account/i })).toBeInTheDocument();
   });
 
-  test('submits the form and logs in the user', async () => {
+  test('submits the form successfully', async () => {
     renderComponent();
 
-    fireEvent.change(screen.getByPlaceholderText('Name'), { target: { value: 'test' } });
+    fireEvent.change(screen.getByPlaceholderText('Name'), { target: { value: 'name' } });
+    fireEvent.change(screen.getByPlaceholderText('Last name'), { target: { value: 'surname' } });
+    fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'username' } });
+    fireEvent.change(screen.getByPlaceholderText('Phone number'), { target: { value: '+32623632' } });
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'test@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Password123' } });
     fireEvent.change(screen.getByPlaceholderText('Confirm password'), { target: { value: 'Password123' } });
@@ -73,7 +79,7 @@ describe('<RegisterForm>', () => {
     fireEvent.click(screen.getByRole('button', { name: /create account/i }));
 
     await waitFor(() => {
-      expect(mockRegister).toHaveBeenCalledWith('test', 'test@example.com', 'Password123');
+      expect(mockRegister).toHaveBeenCalledWith('name', 'surname', 'username', '+32623632', 'test@example.com', 'Password123');
     });
   });
 
@@ -87,6 +93,9 @@ describe('<RegisterForm>', () => {
     renderComponent();
 
     fireEvent.change(screen.getByPlaceholderText('Name'), { target: { value: 'test' } });
+    fireEvent.change(screen.getByPlaceholderText('Last name'), { target: { value: 'test' } });
+    fireEvent.change(screen.getByPlaceholderText('Username'), { target: { value: 'test' } });
+    fireEvent.change(screen.getByPlaceholderText('Phone number'), { target: { value: '+236372' } });
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'wrong@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Wrongpassword1' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'Wrongpassword1' } });

@@ -16,7 +16,12 @@ export const REGISTER = async (req: Request, res: Response) => {
   try {
     const user = req.body;
 
-    const existingUser = await UserModel.findOne({ email: user.email });
+    const existingUser = await UserModel.findOne({
+      $or: [
+        { email: user.email },
+        { username: user.username },
+      ],
+    });
     if (existingUser) {
       return res.status(400).json({ response: 'User already exists' });
     }
