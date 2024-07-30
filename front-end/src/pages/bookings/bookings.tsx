@@ -38,7 +38,7 @@ const BookingsPage = () => {
                   })}
                 </div>
               </div>
-            ) : <p className={styles.noBookings}>You haven&apos;t made any bookings yet 🙁</p>}
+            ) : <p className={styles.noBookings}>You haven&apos;t made any bookings yet.</p>}
         </section>
       </Container>
     </div>

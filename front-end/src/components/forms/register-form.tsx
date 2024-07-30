@@ -6,6 +6,7 @@ import RegisterValidationSchema from '@/formik-validation/register-validation-sc
 import { useEffect } from 'react';
 import useRegister from '@/store/use-register';
 import useAuth from '@/store/use-auth';
+import { clsx } from 'clsx';
 import Container from '../container/container';
 import FormikInput from '../formik-input/formik-input';
 import styles from './styles.module.scss';
@@ -16,7 +17,14 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values: RegisterFormValues) => {
-    await register(values.name, values.email, values.password);
+    await register(
+      values.name,
+      values.surname,
+      values.username,
+      values.phone,
+      values.email,
+      values.password,
+    );
   };
 
   useEffect(() => {
@@ -35,12 +43,27 @@ const RegisterForm = () => {
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
-              <Form className={styles.form} noValidate>
+              <Form className={clsx(styles.form, styles.register)} noValidate>
                 <h2 className={styles.title}>Create an account</h2>
                 <FormikInput
                   name='name'
-                  type='name'
+                  type='text'
                   placeholder='Name'
+                />
+                <FormikInput
+                  name='surname'
+                  type='text'
+                  placeholder='Last name'
+                />
+                <FormikInput
+                  name='username'
+                  type='text'
+                  placeholder='Username'
+                />
+                <FormikInput
+                  name='phone'
+                  type='tel'
+                  placeholder='Phone number'
                 />
                 <FormikInput
                   name='email'
@@ -72,7 +95,6 @@ const RegisterForm = () => {
         </div>
       </Container>
     </div>
-
   );
 };
 

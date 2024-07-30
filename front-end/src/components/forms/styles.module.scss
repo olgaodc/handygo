@@ -18,6 +18,10 @@
     max-width: 460px;
     margin: 0 auto ;
     box-shadow: #5614d040 2px 0px 15px;
+
+    &.register {
+      max-width: 560px;
+    }
   
     .title {
       margin: 0;

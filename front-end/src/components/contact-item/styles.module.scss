@@ -1,0 +1,10 @@
+.contactItem {
+  display: flex;
+  gap: 12px;
+  font-size: 20px;
+  width: calc((100% - 20px) / 2);
+
+  @include medium {
+    width: 100%;
+  }
+}

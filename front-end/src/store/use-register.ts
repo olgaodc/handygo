@@ -9,10 +9,20 @@ import useAuth from './use-auth';
 const userRegister = create<RegisterState & RegisterActions>()(persist(
   (set) => ({
     ...initialState,
-    register: async (name: string, email: string, password: string) => {
+    register: async (
+      name: string,
+      surname: string,
+      username: string,
+      phone: string,
+      email: string,
+      password: string,
+    ) => {
       try {
         const response = await ApiService.post<RegisterResponse>('/register', {
           name,
+          surname,
+          username,
+          phone,
           email,
           password,
         });
