@@ -2,8 +2,6 @@ import useCategories from '@/hooks/use-categories';
 import styles from './styles.module.scss';
 import CategoryCard from '../category-card/category-card';
 
-// TODO: REFACTOR CODE, REUSE CATEGORIES-SECTION HERE
-
 const Sidebar = () => {
   const { data: categories } = useCategories();
 

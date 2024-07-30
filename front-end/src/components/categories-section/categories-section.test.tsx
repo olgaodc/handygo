@@ -28,8 +28,8 @@ const renderComponent = () => render(
   </BrowserRouter>,
 );
 
-// eslint-disable-next-line max-len
-const mockedUseCategories = (useCategories as jest.Mock).mockReturnValue({ data: mockedCategories });
+const mockedUseCategories = (useCategories as jest.Mock)
+  .mockReturnValue({ data: mockedCategories });
 
 describe('<CategoriesSection />', () => {
   test('renders the component', () => {
