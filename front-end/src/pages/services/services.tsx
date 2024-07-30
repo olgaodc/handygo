@@ -16,8 +16,8 @@ const ServicesPage = () => {
 
   const handleSearch = (searchText: string) => {
     setInputText(searchText);
-    // eslint-disable-next-line max-len
-    const filtered = businesses && businesses.filter((business) => business.businessName.toLowerCase().includes(searchText.toLowerCase()));
+    const filtered = businesses && businesses.filter((business) => business.businessName
+      .toLowerCase().includes(searchText.toLowerCase()));
     setFilteredBusinesses(filtered);
     setSearchParams({ search: searchText.toLowerCase() });
   };

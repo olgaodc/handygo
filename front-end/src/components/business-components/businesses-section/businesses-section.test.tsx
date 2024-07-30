@@ -51,8 +51,8 @@ const renderComponent = () => render(
   </BrowserRouter>,
 );
 
-// eslint-disable-next-line max-len
-const mockedUseBusinesses = (useBusinesses as jest.Mock).mockReturnValue({ data: mockedBusinesses });
+const mockedUseBusinesses = (useBusinesses as jest.Mock)
+  .mockReturnValue({ data: mockedBusinesses });
 
 describe('<BusinessesSection />', () => {
   test('renders the component', () => {
