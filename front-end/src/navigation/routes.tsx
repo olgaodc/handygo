@@ -13,6 +13,7 @@ const routes = {
     url: (id: string) => `/business/${id}`,
   },
   BOOKINGS: '/bookings',
+  ACCOUNT: '/account',
   ERROR: '*',
 };
 
