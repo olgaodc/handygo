@@ -6,7 +6,14 @@ export interface RegisterState {
 }
 
 export interface RegisterActions {
-  register: (name: string, email: string, password: string) => Promise<void>;
+  register: (
+    name: string,
+    surname: string,
+    username: string,
+    phone: string,
+    email: string,
+    password: string
+  ) => Promise<void>;
 }
 
 export interface RegisterResponse {
@@ -21,6 +28,9 @@ export const initialState: RegisterState = {
 
 export interface RegisterFormValues {
   name: string,
+  surname: string,
+  username: string,
+  phone: string,
   email: string;
   password: string;
   confirmPassword: string,
@@ -28,6 +38,9 @@ export interface RegisterFormValues {
 
 export const initialValues: RegisterFormValues = {
   name: '',
+  surname: '',
+  username: '',
+  phone: '',
   email: '',
   password: '',
   confirmPassword: '',

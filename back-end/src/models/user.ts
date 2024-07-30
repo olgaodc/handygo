@@ -4,7 +4,9 @@ import bcrypt from 'bcryptjs';
 interface IUser extends Document {
   id: string;
   name: string;
-  age?: number;
+  surname: string;
+  username: string,
+  phone: string;
   email: string;
   password: string;
   isCorrectPassword: (password: string) => Promise<boolean>;
@@ -14,7 +16,9 @@ const userSchema = new Schema<IUser>(
   {
     id: { type: String, required: true, unique: true },
     name: { type: String, required: true },
-    age: { type: Number },
+    surname: { type: String, required: true },
+    username: { type: String, required: true },
+    phone: { type: String, required: true },
     email: {
       type: String, required: true, unique: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     },
