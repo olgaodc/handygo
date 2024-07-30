@@ -18,11 +18,14 @@ describe('userRegister hook', () => {
     const { register, error } = userRegister.getState();
 
     await act(async () => {
-      await register('John Doe', 'john@example.com', 'Password123');
+      await register('John', 'Doe', 'johnd', '+262362', 'john@example.com', 'Password123');
     });
 
     expect(mockPost).toHaveBeenCalledWith('/register', {
-      name: 'John Doe',
+      name: 'John',
+      surname: 'Doe',
+      username: 'johnd',
+      phone: '+262362',
       email: 'john@example.com',
       password: 'Password123',
     });
@@ -39,11 +42,14 @@ describe('userRegister hook', () => {
     const { register } = userRegister.getState();
 
     await act(async () => {
-      await register('John Doe', 'john@example.com', 'Password123');
+      await register('John', 'Doe', 'johnd', '+262362', 'john@example.com', 'Password123');
     });
 
     expect(mockPost).toHaveBeenCalledWith('/register', {
-      name: 'John Doe',
+      name: 'John',
+      surname: 'Doe',
+      username: 'johnd',
+      phone: '+262362',
       email: 'john@example.com',
       password: 'Password123',
     });
@@ -59,11 +65,14 @@ describe('userRegister hook', () => {
     const { register } = userRegister.getState();
 
     await act(async () => {
-      await register('John Doe', 'john@example.com', 'Password123');
+      await register('John', 'Doe', 'johnd', '+262362', 'john@example.com', 'Password123');
     });
 
     expect(mockPost).toHaveBeenCalledWith('/register', {
-      name: 'John Doe',
+      name: 'John',
+      surname: 'Doe',
+      username: 'johnd',
+      phone: '+262362',
       email: 'john@example.com',
       password: 'Password123',
     });
