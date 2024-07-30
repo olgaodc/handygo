@@ -5,7 +5,7 @@ import LocationIcon from '@/assets/location-icon.svg';
 import CalendarIcon from '@/assets/calendar-icon.svg';
 import ClockIcon from '@/assets/clock-icon.svg';
 import styles from './styles.module.scss';
-import ContactItem from '../business-components/contact-item/contact-item';
+import BusinessContact from '../business-components/business-contact/business-contact';
 
 interface Pros {
   booking: Booking,
@@ -30,21 +30,21 @@ const BookingCard: FC<Pros> = ({ booking }) => {
       )}
       <div className={styles.cardInfo}>
         <h3 className={styles.businessName}>{business.businessName}</h3>
-        <ContactItem src={UserIcon} variant='special'>{business.person}</ContactItem>
-        <ContactItem src={LocationIcon} svgColor='primary'>{business.address}</ContactItem>
-        <ContactItem src={CalendarIcon} svgColor='primary'>
+        <BusinessContact src={UserIcon} variant='special'>{business.person}</BusinessContact>
+        <BusinessContact src={LocationIcon} svgColor='primary'>{business.address}</BusinessContact>
+        <BusinessContact src={CalendarIcon} svgColor='primary'>
           <div>
             <span>Service on: </span>
             <span className={styles.date}>{booking.date}</span>
           </div>
 
-        </ContactItem>
-        <ContactItem src={ClockIcon} svgColor='primary'>
+        </BusinessContact>
+        <BusinessContact src={ClockIcon} svgColor='primary'>
           <div>
             <span>Service on: </span>
             <span className={styles.date}>{booking.time}</span>
           </div>
-        </ContactItem>
+        </BusinessContact>
       </div>
     </div>
   );

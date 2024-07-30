@@ -10,7 +10,7 @@ interface Props {
   svgColor?: string,
 }
 
-const ContactItem: FC<Props> = ({
+const BusinessContact: FC<Props> = ({
   src, children, variant = '', svgColor = '',
 }) => {
   return (
@@ -21,4 +21,4 @@ const ContactItem: FC<Props> = ({
   );
 };
 
-export default ContactItem;
+export default BusinessContact;
