@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import UserModel from '../models/user';
+import bcrypt from 'bcryptjs';
+import UserModel, { IUser } from '../models/user';
 import generateToken from '../utils/generate-token';
 
 export const GET_USERS = async (req: Request, res: Response) => {
@@ -62,5 +63,53 @@ export const LOGIN = async (req: Request, res: Response) => {
     return res.status(200).json({ token, userWithoutPassword });
   } catch (error) {
     return res.status(500).json({ message: 'Error logging in.', error: (error as Error).message });
+  }
+};
+
+export const EDIT_USER = async (req: Request, res: Response) => {
+  try {
+    const userId = req.params.id;
+    const user = await UserModel.findOne({ id: userId });
+
+    if (req.currentUser?.id !== userId) {
+      return res.status(400).json({ message: 'You can only update your own user' });
+    }
+
+    if (req.body.newPassword) {
+      const isCorrectPassword = await user?.isCorrectPassword(req.body.currentPassword);
+      if (!isCorrectPassword) {
+        return res.status(401).json({ message: 'Current password is incorrect' });
+      }
+    }
+
+    const updatedUser: Partial<IUser> = {
+      name: req.body.name,
+      surname: req.body.surname,
+      username: req.body.username,
+      phone: req.body.phone,
+      email: req.body.email,
+    };
+
+    if (req.body.newPassword) {
+      updatedUser.password = await bcrypt.hash(req.body.newPassword, 10);
+    }
+
+    await UserModel.findOneAndUpdate(
+      { id: userId },
+      {
+        $set: updatedUser,
+      },
+      { new: true },
+    );
+
+    const token = generateToken(userId);
+
+    const userWithoutPassword = await UserModel.findOne({ id: userId }).select(
+      '-password -_id',
+    );
+
+    return res.status(200).json({ token, userWithoutPassword });
+  } catch (error) {
+    return res.status(500).json({ message: 'Error', error: (error as Error).message });
   }
 };
