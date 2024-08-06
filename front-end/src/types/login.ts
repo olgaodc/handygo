@@ -9,6 +9,7 @@ export interface AuthState {
 export interface AuthActions {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
+  setUser: (user: User) => void;
 }
 
 export type AuthResponse = {

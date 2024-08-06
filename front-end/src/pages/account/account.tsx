@@ -1,6 +1,6 @@
 import Container from '@/components/container/container';
 import useAuth from '@/store/use-auth';
-import ContactItem from '@/components/contact-item/contact-item';
+import UpdateUserForm from '@/components/forms/update-user-form/update-user-form';
 import styles from './styles.module.scss';
 
 const AccountPage = () => {
@@ -20,13 +20,7 @@ const AccountPage = () => {
             </div>
             <div className={styles.contactsWrapper}>
               <h2 className={styles.title}>Contact Information</h2>
-              <div className={styles.contacts}>
-                <ContactItem title='Name:' text={user.name} />
-                <ContactItem title='Last name:' text={user.surname} />
-                <ContactItem title='Username:' text={user.username} />
-                <ContactItem title='Phone number:' text={user.phone} />
-                <ContactItem title='Email:' text={user.email} />
-              </div>
+              <UpdateUserForm />
             </div>
           </div>
         ) : <p className={styles.message}>Log in to see your account.</p> }

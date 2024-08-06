@@ -1,10 +1,20 @@
 .contactItem {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
   font-size: 20px;
-  width: calc((100% - 20px) / 2);
 
   @include medium {
+    width: 100%;
+  }
+
+  .contactTitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: $light-black-color;
+  }
+
+  div {
     width: 100%;
   }
 }
