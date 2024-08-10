@@ -16,6 +16,7 @@ const SearchInput: FC<Props> = ({ value, onChange }) => {
       value={value}
       onChange={onChange}
       maxLength={20}
+      autoComplete='off'
     />
   );
 };

@@ -13,10 +13,13 @@ const ApiService = axios.create({
 
 ApiService.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      // eslint-disable-next-line no-param-reassign
-      config.headers.Authorization = `Bearer ${token}`;
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const { state: { token } } = JSON.parse(storedUser);
+      if (token) {
+        // eslint-disable-next-line no-param-reassign
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
 
     return config;

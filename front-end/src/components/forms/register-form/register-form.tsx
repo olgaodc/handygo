@@ -7,9 +7,9 @@ import { useEffect } from 'react';
 import useRegister from '@/store/use-register';
 import useAuth from '@/store/use-auth';
 import { clsx } from 'clsx';
-import Container from '../container/container';
-import FormikInput from '../formik-input/formik-input';
-import styles from './styles.module.scss';
+import Container from '@/components/container/container';
+import FormikInput from '@/components/formik-input/formik-input';
+import styles from '../form.module.scss';
 
 const RegisterForm = () => {
   const { register, error } = useRegister();

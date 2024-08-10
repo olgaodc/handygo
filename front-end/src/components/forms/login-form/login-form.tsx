@@ -5,9 +5,9 @@ import { Form, Formik } from 'formik';
 import loginValidationSchema from '@/formik-validation/login-validation-schema';
 import { useEffect } from 'react';
 import useAuth from '@/store/use-auth';
-import Container from '../container/container';
-import FormikInput from '../formik-input/formik-input';
-import styles from './styles.module.scss';
+import Container from '@/components/container/container';
+import FormikInput from '@/components/formik-input/formik-input';
+import styles from '../form.module.scss';
 
 const LoginForm = () => {
   const { login, error, user } = useAuth();

@@ -15,6 +15,7 @@ const FormikInput: FC<FormikInputProps> = ({ name, type, placeholder }) => {
         name={name}
         type={type}
         placeholder={placeholder}
+        autoComplete='off'
       />
       <ErrorMessage
         className={styles.error}

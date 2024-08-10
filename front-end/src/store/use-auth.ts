@@ -31,6 +31,7 @@ const useAuth = create<AuthState & AuthActions>()(
       set(initialState);
       useLikedCards.setState({ likedCards: [] });
     },
+    setUser: (user) => set({ user }),
   }), {
     name: 'user',
     partialize: (state) => Object.fromEntries(
