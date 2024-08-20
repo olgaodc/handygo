@@ -34,7 +34,7 @@ const LoginForm = () => {
           >
             {({ isSubmitting }) => (
               <Form className={styles.form} noValidate>
-                <h2 className={styles.title}>Login</h2>
+                <h2 className={styles.title}>Log in to your account</h2>
                 <FormikInput
                   name='email'
                   type='email'
@@ -51,7 +51,7 @@ const LoginForm = () => {
                   type='submit'
                   disabled={isSubmitting}
                 >
-                  Login
+                  Log in
                 </button>
                 <Link className={styles.link} to={routes.REGISTER}>
                   Don&#39;t have an account? Sign up
