@@ -1,30 +1,30 @@
 import ApiService from '@/services/api-service';
 import {
   AuthActions, AuthResponse, AuthState, initialState,
+  LoginFormValues,
 } from '@/types/login';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { toast } from 'react-toastify';
 import useLikedCards from './use-like-card';
 
 const useAuth = create<AuthState & AuthActions>()(
   persist((set) => ({
     ...initialState,
-    login: async (email: string, password: string) => {
+    login: async (values: LoginFormValues, showToast = true) => {
       try {
-        const response = await ApiService.post<AuthResponse>('/login', {
-          email,
-          password,
-        });
+        const response = await ApiService.post<AuthResponse>('/login', values);
         if (response.status === 200) {
           const { userWithoutPassword: user, token } = response.data;
-          set({ user, token, error: null });
+          set({ user, token });
+
+          if (showToast) {
+            toast.success('Logged in successfully!');
+          }
         }
       } catch (err: any) {
-        if (err.response && err.response.status === 401) {
-          set({ user: null, token: undefined, error: 'Incorrect email or password' });
-        } else {
-          set({ user: null, token: undefined, error: 'Something went wrong. Please try again later.' });
-        }
+        const errorMessage = err?.response?.data?.message || 'Something went wrong. Please try again later.';
+        toast.error(errorMessage);
       }
     },
     logout: () => {
@@ -34,11 +34,6 @@ const useAuth = create<AuthState & AuthActions>()(
     setUser: (user) => set({ user }),
   }), {
     name: 'user',
-    partialize: (state) => Object.fromEntries(
-      Object.entries(state).filter(
-        ([key]) => !['error'].includes(key),
-      ),
-    ),
   }),
 );
 

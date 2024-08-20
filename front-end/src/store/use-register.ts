@@ -2,51 +2,38 @@ import { create } from 'zustand';
 import ApiService from '@/services/api-service';
 import { persist } from 'zustand/middleware';
 import {
-  initialState, RegisterActions, RegisterResponse, RegisterState,
+  initialState, RegisterActions, RegisterFormValues, RegisterResponse, RegisterState,
 } from '@/types/register';
+import { toast } from 'react-toastify';
 import useAuth from './use-auth';
 
 const userRegister = create<RegisterState & RegisterActions>()(persist(
-  (set) => ({
+  () => ({
     ...initialState,
     register: async (
-      name: string,
-      surname: string,
-      username: string,
-      phone: string,
-      email: string,
-      password: string,
+      values: RegisterFormValues,
     ) => {
       try {
-        const response = await ApiService.post<RegisterResponse>('/register', {
-          name,
-          surname,
-          username,
-          phone,
-          email,
-          password,
-        });
+        const response = await ApiService.post<RegisterResponse>('/register', values);
 
         if (response.status === 201) {
           const { login } = useAuth.getState();
-          await login(email, password);
+          await login(values, false);
+
+          toast.success('Registered successfully!');
         }
       } catch (err: any) {
         if (err.response && err.response.status === 400) {
-          set({ error: 'User already exists' });
+          toast.error('User already exists');
         } else {
-          set({ error: 'Something went wrong. Please try again later.' });
+          const errorMessage = err?.response?.data?.message || 'Something went wrong. Please try again later.';
+          toast.error(errorMessage);
         }
       }
     },
   }),
   {
     name: 'user',
-    partialize: (state) => Object.fromEntries(
-      Object.entries(state).filter(
-        ([key]) => !['error'].includes(key),
-      ),
-    ),
   },
 ));
 

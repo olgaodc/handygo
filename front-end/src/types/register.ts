@@ -2,18 +2,10 @@ import { User } from './user';
 
 export interface RegisterState {
   user: User | null;
-  error: string | null;
 }
 
 export interface RegisterActions {
-  register: (
-    name: string,
-    surname: string,
-    username: string,
-    phone: string,
-    email: string,
-    password: string
-  ) => Promise<void>;
+  register: (values: RegisterFormValues) => Promise<void>;
 }
 
 export interface RegisterResponse {
@@ -23,7 +15,6 @@ export interface RegisterResponse {
 
 export const initialState: RegisterState = {
   user: null,
-  error: null,
 };
 
 export interface RegisterFormValues {

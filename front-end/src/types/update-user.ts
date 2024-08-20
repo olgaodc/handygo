@@ -3,7 +3,6 @@ import { User } from './user';
 export interface UpdateState {
   user: User | null;
   token: string | null;
-  error: string | null;
 }
 
 export interface UpdateUserActions {
@@ -20,7 +19,6 @@ export interface UpdateResponse {
 export const initialState: UpdateState = {
   user: null,
   token: null,
-  error: null,
 };
 
 export interface UpdateUserFormValues {

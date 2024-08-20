@@ -10,3 +10,9 @@ body {
   font-family: "Roboto", sans-serif;
   min-width: 360px;
 }
+:global {
+  .toastBody {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+  }
+}

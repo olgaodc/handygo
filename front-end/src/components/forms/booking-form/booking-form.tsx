@@ -8,7 +8,7 @@ import useAuth from '@/store/use-auth';
 import { useParams } from 'react-router-dom';
 import { addDays, format } from 'date-fns';
 import bookingValidationSchema from '@/formik-validation/booking-validation-schema';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ReactSVG } from 'react-svg';
 import CloseIcon from '@/assets/close-icon.svg';
 import availableTimeSlots from '@/data/mocked-times';
@@ -23,12 +23,9 @@ const BookingForm = ({ closeModal }: Props) => {
   const { id: businessId } = useParams<{ id: string }>();
   const { bookService, success } = useBooking();
   const { user } = useAuth();
-  const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (success) {
-      setMessage('Successfully booked');
-
       setTimeout(() => {
         closeModal();
       }, 1000);
@@ -94,7 +91,6 @@ const BookingForm = ({ closeModal }: Props) => {
             </div>
             {touched.time && errors.time && <div className={styles.error}>{errors.time}</div>}
           </div>
-          {message && <p className={styles.message}>{message}</p>}
           <PrimaryButton type='submit' disabled={isSubmitting}>Book Now</PrimaryButton>
         </Form>
       )}

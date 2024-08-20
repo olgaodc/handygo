@@ -5,6 +5,7 @@ import {
   initialState, UpdateResponse, UpdateState, UpdateUserActions,
   UpdateUserFormValues,
 } from '@/types/update-user';
+import { toast } from 'react-toastify';
 import useAuth from './use-auth';
 
 const useUpdate = create<UpdateState & UpdateUserActions>()(persist(
@@ -14,7 +15,7 @@ const useUpdate = create<UpdateState & UpdateUserActions>()(persist(
       try {
         const { user: currentUser } = useAuth.getState();
         if (!currentUser) {
-          set({ error: 'User not authenticated' });
+          toast.error('User not authenticated');
           return;
         }
 
@@ -22,23 +23,21 @@ const useUpdate = create<UpdateState & UpdateUserActions>()(persist(
 
         if (response.status === 200) {
           const { userWithoutPassword: updatedUser, token: newToken } = response.data;
-          set({ user: updatedUser, token: newToken, error: null });
+          set({ user: updatedUser, token: newToken });
+
           const { setUser } = useAuth.getState();
           setUser(updatedUser);
+
+          toast.success('Contact information updated successfully!');
         }
       } catch (err: any) {
         const errorMessage = err?.response?.data?.message || 'Something went wrong. Please try again later.';
-        set({ error: errorMessage });
+        toast.error(errorMessage);
       }
     },
   }),
   {
     name: 'user',
-    partialize: (state) => Object.fromEntries(
-      Object.entries(state).filter(
-        ([key]) => !['error'].includes(key),
-      ),
-    ),
   },
 ));
 
