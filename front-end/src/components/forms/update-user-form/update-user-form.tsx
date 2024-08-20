@@ -8,7 +8,7 @@ import PrimaryButton from '@/components/primary-button/primary-button';
 import styles from './styles.module.scss';
 
 const UpdateUserForm = () => {
-  const { update, error } = useUpdate();
+  const { update } = useUpdate();
   const { user } = useAuth();
 
   const formInitialValues = user
@@ -27,10 +27,7 @@ const UpdateUserForm = () => {
     await update(values);
   };
 
-  // TODO: Add message
-
   return (
-
     <div className={styles.formWrapper}>
       <Formik
         initialValues={formInitialValues}
@@ -59,7 +56,6 @@ const UpdateUserForm = () => {
             >
               Update
             </PrimaryButton>
-            {error && <div className={styles.error}>{error}</div>}
           </Form>
         )}
       </Formik>

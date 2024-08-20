@@ -10,11 +10,11 @@ import FormikInput from '@/components/formik-input/formik-input';
 import styles from '../form.module.scss';
 
 const LoginForm = () => {
-  const { login, error, user } = useAuth();
+  const { login, user } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (values: LoginFormValues) => {
-    await login(values.email, values.password);
+    await login(values, true);
   };
 
   useEffect(() => {
@@ -45,7 +45,6 @@ const LoginForm = () => {
                   type='password'
                   placeholder='Password'
                 />
-                {error && <div className={styles.error}>{error}</div>}
                 <button
                   className={styles.button}
                   type='submit'

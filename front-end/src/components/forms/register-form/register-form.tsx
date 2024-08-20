@@ -12,19 +12,12 @@ import FormikInput from '@/components/formik-input/formik-input';
 import styles from '../form.module.scss';
 
 const RegisterForm = () => {
-  const { register, error } = useRegister();
+  const { register } = useRegister();
   const { user } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (values: RegisterFormValues) => {
-    await register(
-      values.name,
-      values.surname,
-      values.username,
-      values.phone,
-      values.email,
-      values.password,
-    );
+    await register(values);
   };
 
   useEffect(() => {
@@ -88,7 +81,6 @@ const RegisterForm = () => {
                 >
                   Create account
                 </button>
-                {error && <div className={styles.error}>{error}</div>}
               </Form>
             )}
           </Formik>
