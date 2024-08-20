@@ -37,7 +37,7 @@ const Dropdown: FC<Props> = ({ isOpen = false, closeDropdown }) => {
         type='button'
         onClick={logout}
       >
-        Logout
+        Log Out
       </button>
     </div>
 

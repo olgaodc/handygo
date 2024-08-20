@@ -50,8 +50,8 @@ const Navbar = () => {
                 variant='primary'
                 onClick={handleLogin}
               >
-                <span className={styles.largeBtnText}>Login / Sign Up</span>
-                <span className={styles.smallBtnText}>Login</span>
+                <span className={styles.largeBtnText}>Log In / Sign Up</span>
+                <span className={styles.smallBtnText}>Log In</span>
               </PrimaryButton>
             )}
         </nav>

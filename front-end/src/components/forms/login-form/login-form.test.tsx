@@ -68,7 +68,7 @@ describe('LoginForm', () => {
 
     fireEvent.change(screen.getByPlaceholderText('Email'), { target: { value: 'wrong@example.com' } });
     fireEvent.change(screen.getByPlaceholderText('Password'), { target: { value: 'wrongpassword' } });
-    fireEvent.click(screen.getByRole('button', { name: /login/i }));
+    fireEvent.click(screen.getByRole('button', { name: /log in/i }));
 
     expect(await screen.findByText('Incorrect email or password')).toBeInTheDocument();
   });
