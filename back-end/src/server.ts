@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 const mongoConnect = process.env.MONGO_CONNECT;
 
 server.use(express.json());
-server.use(cors());
+server.use(cors({ origin: 'https://logoipsum-m8my.onrender.com' }));
 
 server.use(express.json({ limit: '50mb' }));
 
