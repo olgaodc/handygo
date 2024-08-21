@@ -23,6 +23,8 @@ const useAuth = create<AuthState & AuthActions>()(
           }
         }
       } catch (err: any) {
+        set({ user: null, token: undefined });
+
         const errorMessage = err?.response?.data?.message || 'Something went wrong. Please try again later.';
         toast.error(errorMessage);
       }

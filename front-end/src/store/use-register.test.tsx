@@ -1,36 +1,42 @@
 import { act } from '@testing-library/react';
+import { toast } from 'react-toastify';
 import ApiService from '@/services/api-service';
 import userRegister from '@/store/use-register';
+import { RegisterFormValues } from '@/types/register';
 
 jest.mock('@/services/api-service');
+jest.mock('react-toastify', () => ({
+  toast: {
+    success: jest.fn(),
+    error: jest.fn(),
+  },
+}));
+
+const mockedUser: RegisterFormValues = {
+  name: 'John',
+  surname: 'Doe',
+  username: 'johnd',
+  phone: '+262362',
+  email: 'john@example.com',
+  password: 'Password123',
+  confirmPassword: 'Password123',
+};
 
 const mockPost = ApiService.post as jest.MockedFunction<typeof ApiService.post>;
 
-jest.mock('@/store/use-auth', () => ({
-  login: jest.fn(),
-}));
-
 describe('userRegister hook', () => {
-  test('should register a user and call login on successful registration', async () => {
+  test('should register a user', async () => {
     const mockResponse = { status: 201 };
     mockPost.mockResolvedValue(mockResponse);
 
-    const { register, error } = userRegister.getState();
+    const { register } = userRegister.getState();
 
     await act(async () => {
-      await register('John', 'Doe', 'johnd', '+262362', 'john@example.com', 'Password123');
+      await register(mockedUser);
     });
 
-    expect(mockPost).toHaveBeenCalledWith('/register', {
-      name: 'John',
-      surname: 'Doe',
-      username: 'johnd',
-      phone: '+262362',
-      email: 'john@example.com',
-      password: 'Password123',
-    });
-
-    expect(error).toBe(null);
+    expect(mockPost).toHaveBeenCalledWith('/register', mockedUser);
+    expect(toast.success).toHaveBeenCalledWith('Registered successfully!');
   });
 
   test('should set error message when registration fails with 400 status', async () => {
@@ -42,18 +48,11 @@ describe('userRegister hook', () => {
     const { register } = userRegister.getState();
 
     await act(async () => {
-      await register('John', 'Doe', 'johnd', '+262362', 'john@example.com', 'Password123');
+      await register(mockedUser);
     });
 
-    expect(mockPost).toHaveBeenCalledWith('/register', {
-      name: 'John',
-      surname: 'Doe',
-      username: 'johnd',
-      phone: '+262362',
-      email: 'john@example.com',
-      password: 'Password123',
-    });
-    expect(userRegister.getState().error).toBe('User already exists');
+    expect(mockPost).toHaveBeenCalledWith('/register', mockedUser);
+    expect(toast.error).toHaveBeenCalledWith('User already exists');
   });
 
   test('should set generic error message when registration fails with other status', async () => {
@@ -65,17 +64,10 @@ describe('userRegister hook', () => {
     const { register } = userRegister.getState();
 
     await act(async () => {
-      await register('John', 'Doe', 'johnd', '+262362', 'john@example.com', 'Password123');
+      await register(mockedUser);
     });
 
-    expect(mockPost).toHaveBeenCalledWith('/register', {
-      name: 'John',
-      surname: 'Doe',
-      username: 'johnd',
-      phone: '+262362',
-      email: 'john@example.com',
-      password: 'Password123',
-    });
-    expect(userRegister.getState().error).toBe('Something went wrong. Please try again later.');
+    expect(mockPost).toHaveBeenCalledWith('/register', mockedUser);
+    expect(toast.error).toHaveBeenCalledWith('Something went wrong. Please try again later.');
   });
 });
