@@ -1,8 +1,15 @@
 import ApiService from '@/services/api-service';
 import { act, renderHook, waitFor } from '@testing-library/react';
+import { toast } from 'react-toastify';
 import useAuth from './use-auth';
 
 jest.mock('@/services/api-service');
+jest.mock('react-toastify', () => ({
+  toast: {
+    success: jest.fn(),
+    error: jest.fn(),
+  },
+}));
 
 describe('useAuth hook', () => {
   afterEach(() => {
@@ -20,7 +27,7 @@ describe('useAuth hook', () => {
     const { result } = renderHook(() => useAuth());
 
     act(() => {
-      result.current.login('test@example.com', 'password123');
+      result.current.login({ email: 'test@example.com', password: 'password123' }, true);
     });
 
     await waitFor(() => {
@@ -32,17 +39,17 @@ describe('useAuth hook', () => {
     });
 
     await waitFor(() => {
-      expect(result.current.error).toBeNull();
+      expect(toast.success).toHaveBeenCalledWith('Logged in successfully!');
     });
   });
 
   test('should handle login error', async () => {
-    (ApiService.post as jest.Mock).mockRejectedValue({ response: { status: 401 } });
+    (ApiService.post as jest.Mock).mockRejectedValue({ response: { status: 401, data: { message: 'Incorrect email or password' } } });
 
     const { result } = renderHook(() => useAuth());
 
     act(() => {
-      result.current.login('wrong@example.com', 'wrongpassword');
+      result.current.login({ email: 'wrong@example.com', password: 'wrongpassword' }, true);
     });
 
     await waitFor(() => {
@@ -54,7 +61,7 @@ describe('useAuth hook', () => {
     });
 
     await waitFor(() => {
-      expect(result.current.error).toBe('Incorrect email or password');
+      expect(toast.error).toHaveBeenCalledWith('Incorrect email or password');
     });
   });
 });
