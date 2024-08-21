@@ -1,7 +1,8 @@
 import axios from 'axios';
-import PROD from '@/consts/environment';
+// import PROD from '@/consts/environment';
 
-const baseURL = PROD ? 'https://logoipsum-2a5d3c57950f.herokuapp.com/' : 'http://localhost:3001/';
+// const baseURL = PROD ? 'https://logoipsum-2a5d3c57950f.herokuapp.com/' : 'http://localhost:3001/';
+const baseURL = 'https://logoipsum-backend.onrender.com/';
 
 const ApiService = axios.create({
   baseURL,

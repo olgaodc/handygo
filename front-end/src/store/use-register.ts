@@ -10,9 +10,7 @@ import useAuth from './use-auth';
 const userRegister = create<RegisterState & RegisterActions>()(persist(
   () => ({
     ...initialState,
-    register: async (
-      values: RegisterFormValues,
-    ) => {
+    register: async (values: RegisterFormValues) => {
       try {
         const response = await ApiService.post<RegisterResponse>('/register', values);
 
