@@ -1,6 +1,15 @@
 /* eslint-disable max-len */
 import Container from '@/components/container/container';
 import AboutImage from '@/assets/about-image.jpg';
+import { ReactSVG } from 'react-svg';
+import West53Icon from '@/assets/about-images/icon-53-west-53.svg';
+import AlfredIcon from '@/assets/about-images/icon-alfred.svg';
+import CompassIcon from '@/assets/about-images/icon-compass.svg';
+import CorcoranIcon from '@/assets/about-images/icon-corcoran.svg';
+import DouglasEllimanIcon from '@/assets/about-images/icon-douglas-elliman.svg';
+import LuxuryApartmentsIcon from '@/assets/about-images/icon-luxury-apartments.svg';
+import RemaxIcon from '@/assets/about-images/icon-remax.svg';
+import SolowIcon from '@/assets/about-images/icon-solow.svg';
 import styles from './styles.module.scss';
 
 // TODO: 'FETCH FROM API'
@@ -29,14 +38,22 @@ const AboutPage = () => {
           <section className={styles.trusted}>
             <h2 className={styles.title}>Trusted By</h2>
             <div className={styles.trustedImages}>
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-53-west-53.svg' alt='53 WEST company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-douglas-elliman-1.svg' alt='DouglasElliman company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-compass.svg' alt='COMPASS company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-remax.svg' alt='REMAX company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-solow.svg' alt='Solow Building Company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-hello-alfred.svg' alt='Alfred company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-corcoran.svg' alt='corcoran company logo' />
-              <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-luxury-apartments-lic.svg' alt='Luxury apartments company logo' />
+              <ReactSVG src={West53Icon} />
+              <ReactSVG src={DouglasEllimanIcon} />
+              <ReactSVG src={CompassIcon} />
+              <ReactSVG src={RemaxIcon} />
+              <ReactSVG src={SolowIcon} />
+              <ReactSVG src={AlfredIcon} />
+              <ReactSVG src={CorcoranIcon} />
+              <ReactSVG src={LuxuryApartmentsIcon} />
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-53-west-53.svg' alt='53 WEST company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-douglas-elliman-1.svg' alt='DouglasElliman company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-compass.svg' alt='COMPASS company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-remax.svg' alt='REMAX company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-solow.svg' alt='Solow Building Company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-hello-alfred.svg' alt='Alfred company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-corcoran.svg' alt='corcoran company logo' /> */}
+              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-luxury-apartments-lic.svg' alt='Luxury apartments company logo' /> */}
             </div>
           </section>
         </div>
