@@ -46,14 +46,6 @@ const AboutPage = () => {
               <ReactSVG src={AlfredIcon} />
               <ReactSVG src={CorcoranIcon} />
               <ReactSVG src={LuxuryApartmentsIcon} />
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-53-west-53.svg' alt='53 WEST company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-douglas-elliman-1.svg' alt='DouglasElliman company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-compass.svg' alt='COMPASS company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-remax.svg' alt='REMAX company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-solow.svg' alt='Solow Building Company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-hello-alfred.svg' alt='Alfred company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-corcoran.svg' alt='corcoran company logo' /> */}
-              {/* <img src='https://cdn-djmem.nitrocdn.com/YWiyFhEwbncWbDxIIsxzLPLVaLvBLAoD/assets/images/source/rev-b064492/sekamoving.com/wp-content/uploads/2022/12/icon-luxury-apartments-lic.svg' alt='Luxury apartments company logo' /> */}
             </div>
           </section>
         </div>
