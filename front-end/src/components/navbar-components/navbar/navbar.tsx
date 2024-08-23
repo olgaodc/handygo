@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
-import LogoImage from '@/assets/logo.png';
+import LogoImage from '@/assets/logo.svg';
 import useAuth from '@/store/use-auth';
 import { useState } from 'react';
 import Container from '../../container/container';
