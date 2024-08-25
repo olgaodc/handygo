@@ -36,8 +36,7 @@ const Navbar = () => {
           <div className={styles.navbarList}>
             <BurgerButton isMenuOpen={isMenuOpen} toggleMenu={handleMenuToggle} />
             <Link className={styles.logoLink} to={routes.HOME}>
-              <img className={styles.logoImage} src={LogoImage} alt='logo' />
-              <span className={styles.logoTitle}>HandyGo</span>
+              <img className={styles.logoImage} src={LogoImage} alt='Handygo logo' />
             </Link>
             <DesktopMenu />
           </div>
