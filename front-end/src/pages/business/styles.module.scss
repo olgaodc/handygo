@@ -1,7 +1,7 @@
 .section {
-  margin: 80px 0;
+  margin: 60px 0 120px;
 
   @include medium {
-    margin: 50px 0 0;
+    margin-top: 50px;
   }
 }

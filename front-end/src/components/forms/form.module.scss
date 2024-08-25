@@ -1,7 +1,6 @@
 .content {
   background-color: $light-grey-bg;
-  min-height: calc(100vh - 112px);
-  padding: 100px 0 50px;
+  padding: 80px 0 120px;
 
   @include small {
     padding: 50px 0;

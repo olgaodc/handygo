@@ -15,6 +15,27 @@
     }
   }
 
+  &.footer {
+    color: $light-black-color;
+    transition: 0.3s all;
+
+    .icon {
+      svg path {
+        fill: $light-black-color;
+      }
+    }
+
+    &:hover {
+      color: $primary-color;
+
+      .icon {
+        svg path {
+          fill: $primary-color;
+        }
+      }
+    }
+  }
+
   .icon {  
     svg {
       height: 20px;
