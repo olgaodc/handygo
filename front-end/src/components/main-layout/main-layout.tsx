@@ -1,12 +1,14 @@
 import Navbar from '@/components/navbar-components/navbar/navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { Bounce, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from '../footer/footer';
 
 const MainLayout = () => {
   return (
-    <div>
+    <>
       <Navbar />
+      <ScrollRestoration />
       <Outlet />
       <ToastContainer
         bodyClassName='toastBody'
@@ -22,7 +24,8 @@ const MainLayout = () => {
         theme='light'
         transition={Bounce}
       />
-    </div>
+      <Footer />
+    </>
   );
 };
 

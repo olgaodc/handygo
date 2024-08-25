@@ -11,19 +11,6 @@
       display: flex;
       align-items: center;
       gap: 20px;
-
-      .logoLink {
-        text-decoration: none;
-
-        .logoImage {
-          display: block;
-          height: 60px;
-
-          @include small {
-            height: 50px;
-          }
-        }
-      }
     }
     
     .largeBtnText {

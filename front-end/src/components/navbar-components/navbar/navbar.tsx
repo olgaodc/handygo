@@ -1,8 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import routes from '@/navigation/routes';
-import LogoImage from '@/assets/logo.svg';
 import useAuth from '@/store/use-auth';
 import { useState } from 'react';
+import Logo from '@/components/logo/logo';
 import Container from '../../container/container';
 import PrimaryButton from '../../primary-button/primary-button';
 import styles from './styles.module.scss';
@@ -35,9 +35,7 @@ const Navbar = () => {
           <MobileMenu isOpen={isMenuOpen} closeMenu={handleNavigate} />
           <div className={styles.navbarList}>
             <BurgerButton isMenuOpen={isMenuOpen} toggleMenu={handleMenuToggle} />
-            <Link className={styles.logoLink} to={routes.HOME}>
-              <img className={styles.logoImage} src={LogoImage} alt='Handygo logo' />
-            </Link>
+            <Logo />
             <DesktopMenu />
           </div>
           {user
