@@ -1,0 +1,51 @@
+.footerWrapper {
+  background-color: $service-card-color;
+  padding: 40px 0 20px;
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    color: $light-black-color;
+
+    .listsWrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px 20px;
+
+      @include medium {
+        flex-wrap: wrap;
+      }
+
+      @include small {
+        flex-direction: column;
+      }
+
+      .listName {
+        margin: 0 0 20px;
+        font-size: 20px;
+      }
+
+      .list {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .listItem {
+          list-style-type: none;
+          font-size: 18px;
+        }
+
+        .itemLink {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .footerInfo {
+      padding-top: 50px;
+      align-self: center;
+    }
+  }
+}
