@@ -1,7 +1,7 @@
 .avatarWrapper {
   .avatar {
-    font-size: 22px;
-    font-weight: 500;
+    height: 54px;
+    width: 54px;
     border: none;
     background-color: $primary-color;
     color: $white-color;
@@ -9,13 +9,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 13px 18px;
+    padding: 15px;
     cursor: pointer;
     transition: all 0.3s; 
 
     @include small {
-      padding: 13px 17px;
-      font-size: 18px;
+      height: 46px;
+      width: 46px;
+      padding: 13px;
+    }
+
+    span {
+      font-size: 22px;
+      font-weight: 500;
+
+      @include small {
+        font-size: 18px;
+      }
     }
 
     &:hover {

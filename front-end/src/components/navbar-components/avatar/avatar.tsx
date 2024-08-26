@@ -41,7 +41,9 @@ const Avatar = () => {
         type='button'
         onClick={handleDropdown}
       >
-        {userFirstLetter}
+        <span>
+          {userFirstLetter}
+        </span>
       </button>
       <div className={styles.dropdownWrapper}>
         <Dropdown isOpen={isOpen} closeDropdown={closeDropdown} />
