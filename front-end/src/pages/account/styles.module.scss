@@ -1,11 +1,9 @@
 .content {
   padding: 60px 0 120px;
   background-color: $light-grey-bg;
-  min-height: calc(100vh - 112px);
 
   @include medium {
-    padding: 40px 0;
-    min-height: calc(100vh - 103px);
+    padding-top: 50px;
   }
 
   .accountInfoWrapper {
@@ -64,4 +62,12 @@
   }
 }
 
+.messageWrapper {
+  height: calc(100vh - 565px);
+
+  .message {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
 
