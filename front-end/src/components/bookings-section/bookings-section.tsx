@@ -36,7 +36,7 @@ const BookingsSection = () => {
   });
 
   return (
-    <div>
+    <div className={styles.content}>
       <Container>
         <section className={styles.bookingsWrapper}>
           <h2 className={styles.title}>My bookings</h2>
