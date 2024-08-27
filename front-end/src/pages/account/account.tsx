@@ -23,7 +23,11 @@ const AccountPage = () => {
               <UpdateUserForm />
             </div>
           </div>
-        ) : <p className={styles.message}>Log in to see your account.</p> }
+        ) : (
+          <div className={styles.messageWrapper}>
+            <p className={styles.message}>Log in to see your account.</p>
+          </div>
+        ) }
 
       </Container>
     </div>
