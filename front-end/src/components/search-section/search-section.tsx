@@ -6,7 +6,7 @@ import routes from '@/navigation/routes';
 import Container from '../container/container';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
-import SearchInput from '../search-input/search-input';
+import SearchInput from '../form-components/inputs/search-input/search-input';
 
 interface Props {
   shouldNavigate?: boolean,

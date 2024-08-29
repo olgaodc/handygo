@@ -1,6 +1,6 @@
 import Container from '@/components/container/container';
 import useAuth from '@/store/use-auth';
-import UpdateUserForm from '@/components/forms/update-user-form/update-user-form';
+import UpdateUserForm from '@/components/form-components/forms/update-user-form/update-user-form';
 import styles from './styles.module.scss';
 
 const AccountPage = () => {
