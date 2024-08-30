@@ -25,10 +25,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 19px;
+    padding: 13px;
+    height: 50px;
+    width: 50px;
 
     @include small {
-      padding: 13px;
+      height: 40px;
+      width: 40px;
     }
   }
 

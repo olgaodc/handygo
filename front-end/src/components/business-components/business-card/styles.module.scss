@@ -1,6 +1,6 @@
 .card {
   text-decoration: none;
-  color: $black-color;
+  color: $light-black-color;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1490196078) -0.05px 1.95px 12.6px;
   height: 450px;
@@ -13,9 +13,7 @@
   }
 
   &.liked {
-    .likeBtn {
-      
-
+    .likeBtn { 
       svg {
         fill: $primary-color;
       }
