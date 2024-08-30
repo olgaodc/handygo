@@ -6,12 +6,14 @@ import CalendarIcon from '@/assets/calendar-icon.svg';
 import ClockIcon from '@/assets/clock-icon.svg';
 import styles from './styles.module.scss';
 import BusinessContact from '../business-components/business-contact/business-contact';
+import PrimaryButton from '../primary-button/primary-button';
 
 interface Pros {
   booking: Booking,
+  onDeleteClick: () => void;
 }
 
-const BookingCard: FC<Pros> = ({ booking }) => {
+const BookingCard: FC<Pros> = ({ booking, onDeleteClick }) => {
   const business = booking.businessInfo[0];
   const businessImage = business.images[0];
 
@@ -37,7 +39,6 @@ const BookingCard: FC<Pros> = ({ booking }) => {
             <span>Service on: </span>
             <span className={styles.date}>{booking.date}</span>
           </div>
-
         </BusinessContact>
         <BusinessContact src={ClockIcon} svgColor='primary'>
           <div>
@@ -45,6 +46,9 @@ const BookingCard: FC<Pros> = ({ booking }) => {
             <span className={styles.date}>{booking.time}</span>
           </div>
         </BusinessContact>
+        {booking.status !== 'completed' && (
+          <PrimaryButton variant='delete' onClick={onDeleteClick}>Delete</PrimaryButton>
+        )}
       </div>
     </div>
   );

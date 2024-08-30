@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 interface PrimaryButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   children: React.ReactNode,
   onClick?: React.MouseEventHandler<HTMLButtonElement>,
-  variant?: 'primary' | 'round' | 'small',
+  variant?: 'primary' | 'round' | 'small' | 'delete' | 'cancel' | 'modalDeleteBtn',
   disabled?: boolean,
   type?: 'button' | 'submit' | 'reset',
 }
