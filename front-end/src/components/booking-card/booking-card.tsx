@@ -4,16 +4,23 @@ import UserIcon from '@/assets/user-icon.svg';
 import LocationIcon from '@/assets/location-icon.svg';
 import CalendarIcon from '@/assets/calendar-icon.svg';
 import ClockIcon from '@/assets/clock-icon.svg';
+import useDeleteBooking from '@/hooks/use-delete-booking';
 import styles from './styles.module.scss';
 import BusinessContact from '../business-components/business-contact/business-contact';
+import PrimaryButton from '../primary-button/primary-button';
 
 interface Pros {
   booking: Booking,
 }
 
 const BookingCard: FC<Pros> = ({ booking }) => {
+  const { mutateAsync: deleteBooking } = useDeleteBooking();
   const business = booking.businessInfo[0];
   const businessImage = business.images[0];
+
+  const handleCancel = (id: string) => {
+    deleteBooking(id);
+  };
 
   return (
     <div
@@ -37,7 +44,6 @@ const BookingCard: FC<Pros> = ({ booking }) => {
             <span>Service on: </span>
             <span className={styles.date}>{booking.date}</span>
           </div>
-
         </BusinessContact>
         <BusinessContact src={ClockIcon} svgColor='primary'>
           <div>
@@ -45,6 +51,9 @@ const BookingCard: FC<Pros> = ({ booking }) => {
             <span className={styles.date}>{booking.time}</span>
           </div>
         </BusinessContact>
+        {booking.status !== 'completed' && (
+          <PrimaryButton variant='cancel' onClick={() => handleCancel(booking.id)}>Cancel</PrimaryButton>
+        )}
       </div>
     </div>
   );
