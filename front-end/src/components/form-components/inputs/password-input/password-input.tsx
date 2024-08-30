@@ -43,7 +43,7 @@ const PasswordInput: FC<FormikInputProps> = ({
       </div>
       <ErrorMessage
         className={styles.error}
-        name='password'
+        name={name}
         component='div'
       />
     </div>
