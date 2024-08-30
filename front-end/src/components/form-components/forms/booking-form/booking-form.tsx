@@ -13,7 +13,7 @@ import { ReactSVG } from 'react-svg';
 import CloseIcon from '@/assets/close-icon.svg';
 import availableTimeSlots from '@/data/mocked-times';
 import styles from './styles.module.scss';
-import PrimaryButton from '../../primary-button/primary-button';
+import PrimaryButton from '../../../primary-button/primary-button';
 
 interface Props {
   closeModal: () => void;

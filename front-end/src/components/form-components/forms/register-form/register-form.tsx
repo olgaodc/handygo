@@ -8,8 +8,9 @@ import useRegister from '@/store/use-register';
 import useAuth from '@/store/use-auth';
 import { clsx } from 'clsx';
 import Container from '@/components/container/container';
-import FormikInput from '@/components/formik-input/formik-input';
+import FormikInput from '@/components/form-components/inputs/formik-input/formik-input';
 import styles from '../form.module.scss';
+import PasswordInput from '../../inputs/password-input/password-input';
 
 const RegisterForm = () => {
   const { register } = useRegister();
@@ -63,17 +64,14 @@ const RegisterForm = () => {
                   type='email'
                   placeholder='Email'
                 />
-                <FormikInput
+                <PasswordInput
                   name='password'
-                  type='password'
                   placeholder='Password'
                 />
-                <FormikInput
+                <PasswordInput
                   name='confirmPassword'
-                  type='password'
                   placeholder='Confirm password'
                 />
-
                 <button
                   className={styles.button}
                   type='submit'

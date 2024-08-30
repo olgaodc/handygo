@@ -6,7 +6,8 @@ import loginValidationSchema from '@/formik-validation/login-validation-schema';
 import { useEffect } from 'react';
 import useAuth from '@/store/use-auth';
 import Container from '@/components/container/container';
-import FormikInput from '@/components/formik-input/formik-input';
+import FormikInput from '@/components/form-components/inputs/formik-input/formik-input';
+import PasswordInput from '@/components/form-components/inputs/password-input/password-input';
 import styles from '../form.module.scss';
 
 const LoginForm = () => {
@@ -40,9 +41,8 @@ const LoginForm = () => {
                   type='email'
                   placeholder='Email'
                 />
-                <FormikInput
+                <PasswordInput
                   name='password'
-                  type='password'
                   placeholder='Password'
                 />
                 <button

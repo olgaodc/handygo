@@ -1,0 +1,59 @@
+.inputWrapper {
+  width: 100%;
+
+  .contactTitle {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .input {
+    width: 100%;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid $light-grey-color;
+
+    &::placeholder {
+      color: $light-grey-color;
+    }
+  }
+
+  .error {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $danger-color;
+  }
+}
+
+.fieldWrapper {
+  display: flex;
+
+  .inputButton {
+    all: unset;
+    display: block;
+    cursor: pointer;
+    border-bottom: 2px solid $light-grey-color;
+    padding-right: 5px;    
+  
+    .buttonIcon {
+      svg {
+        fill: $darker-grey-color;
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover {
+        svg {
+          fill: $primary-color;
+        }
+      }
+    }
+  }
+}

@@ -3,9 +3,10 @@ import { initialValues, UpdateUserFormValues } from '@/types/update-user';
 import useUpdate from '@/store/use-update-user';
 import UpdateUserValidationSchema from '@/formik-validation/update-user-validation-schema';
 import useAuth from '@/store/use-auth';
-import ContactItem from '@/components/contact-item/contact-item';
 import PrimaryButton from '@/components/primary-button/primary-button';
 import styles from './styles.module.scss';
+import PasswordInput from '../../inputs/password-input/password-input';
+import FormikInput from '../../inputs/formik-input/formik-input';
 
 const UpdateUserForm = () => {
   const { update } = useUpdate();
@@ -33,26 +34,26 @@ const UpdateUserForm = () => {
         initialValues={formInitialValues}
         validationSchema={UpdateUserValidationSchema}
         onSubmit={handleSubmit}
-        enableReinitialize
+        enableReinitialize={false}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, dirty }) => (
           <Form className={styles.form} noValidate>
             <div className={styles.contactWrapper}>
               <div className={styles.contacts}>
-                <ContactItem title='First name' name='name' placeholder='Your first name' />
-                <ContactItem title='Last name' name='surname' placeholder='Your last name' />
-                <ContactItem title='Username' name='username' placeholder='Your username' />
-                <ContactItem title='Phone number' name='phone' type='tel' placeholder='Your phone number' />
+                <FormikInput title='First name' name='name' placeholder='Your first name' showLabel />
+                <FormikInput title='Last name' name='surname' placeholder='Your last name' showLabel />
+                <FormikInput title='Username' name='username' placeholder='Your username' showLabel />
+                <FormikInput title='Phone number' name='phone' type='tel' placeholder='Your phone number' showLabel />
               </div>
               <div className={styles.contacts}>
-                <ContactItem title='Email' name='email' type='email' placeholder='Your email' />
-                <ContactItem title='Current password' name='currentPassword' type='password' placeholder='Enter your current password' />
-                <ContactItem title='New password' name='newPassword' type='password' placeholder='Enter a new password' />
+                <FormikInput title='Email' name='email' type='email' placeholder='Your email' showLabel />
+                <PasswordInput title='Current Password' name='currentPassword' placeholder='Enter your current password' showLabel />
+                <PasswordInput title='New password' name='newPassword' placeholder='Enter a new password' showLabel />
               </div>
             </div>
             <PrimaryButton
               type='submit'
-              disabled={isSubmitting}
+              disabled={isSubmitting || !dirty}
             >
               Update
             </PrimaryButton>

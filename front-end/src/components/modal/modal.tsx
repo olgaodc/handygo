@@ -2,7 +2,7 @@ import { FC } from 'react';
 import ReactModal from 'react-modal';
 import { clsx } from 'clsx';
 import styles from './styles.module.scss';
-import BookingForm from '../forms/booking-form/booking-form';
+import BookingForm from '../form-components/forms/booking-form/booking-form';
 
 ReactModal.setAppElement('#root');
 
