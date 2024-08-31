@@ -36,9 +36,11 @@ const mockedBookingWithoutImage: Booking = {
   }],
 };
 
+const mockOnDeleteClick = jest.fn();
+
 describe('<BookingCard />', () => {
   test('renders Booking Card with all details', () => {
-    render(<BookingCard booking={mockedBooking} />);
+    render(<BookingCard booking={mockedBooking} onDeleteClick={mockOnDeleteClick} />);
 
     expect(screen.getByText('Roof Experts')).toBeInTheDocument();
     expect(screen.getByText('test st 1, NY')).toBeInTheDocument();
@@ -50,10 +52,13 @@ describe('<BookingCard />', () => {
     expect(image).toHaveAttribute('src', 'test-url.png');
 
     expect(screen.getByText('Alice Doe')).toBeInTheDocument();
+
+    const deleteButton = screen.getByRole('button', { name: /delete/i });
+    expect(deleteButton).toBeInTheDocument();
   });
 
   test('does not render image if images is empty', () => {
-    render(<BookingCard booking={mockedBookingWithoutImage} />);
+    render(<BookingCard booking={mockedBookingWithoutImage} onDeleteClick={mockOnDeleteClick} />);
 
     expect(screen.queryByAltText('two workers fixing roof')).not.toBeInTheDocument();
   });
