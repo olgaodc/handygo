@@ -34,16 +34,16 @@
 }
 
 :global {
-  .ReactModal__Overlay {
-    opacity: 0;
-    transition: all 300ms ease-in-out;
+  .ReactModal__Content {
+    transform: translateX(500px);
+    transition: transform 500ms ease-in-out;
   }
   
-  .ReactModal__Overlay--after-open {
-    opacity: 1;
+  .ReactModal__Content--after-open {
+    transform: translateX(0);
   }
   
-  .ReactModal__Overlay--before-close {
-    opacity: 0;
+  .ReactModal__Content--before-close {
+    transform: translateX(500px);
   }
 }

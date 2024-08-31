@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 import { clsx } from 'clsx';
 import styles from './styles.module.scss';
 import BookingForm from '../form-components/forms/booking-form/booking-form';
 
-ReactModal.setAppElement('#root');
+Modal.setAppElement('body');
 
 interface ModalProps {
   isOpen: boolean;
@@ -12,20 +12,20 @@ interface ModalProps {
   closeModal: () => void;
 }
 
-const Modal: FC<ModalProps> = ({ isOpen, onRequestClose, closeModal }) => {
+const BookingModal: FC<ModalProps> = ({ isOpen, onRequestClose, closeModal }) => {
   return (
-    <ReactModal
+    <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       className={clsx(styles.modal, isOpen && styles.isOpen)}
       overlayClassName={styles.modalOverlay}
       contentLabel='Reservation Modal'
-      closeTimeoutMS={500}
+      closeTimeoutMS={300}
     >
       <BookingForm closeModal={closeModal} />
 
-    </ReactModal>
+    </Modal>
   );
 };
 
-export default Modal;
+export default BookingModal;
