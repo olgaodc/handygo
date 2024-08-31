@@ -3,17 +3,18 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { BookingFormValues, initialValues } from '@/types/booking';
 import { Form, Formik } from 'formik';
-import useBooking from '@/hooks/use-booking';
+import { useCreateBooking } from '@/hooks/use-booking';
 import useAuth from '@/store/use-auth';
 import { useParams } from 'react-router-dom';
 import { addDays, format } from 'date-fns';
 import bookingValidationSchema from '@/formik-validation/booking-validation-schema';
-import { useEffect } from 'react';
 import { ReactSVG } from 'react-svg';
 import CloseIcon from '@/assets/close-icon.svg';
 import availableTimeSlots from '@/data/mocked-times';
+import { toast } from 'react-toastify';
+import { useState } from 'react';
+import PrimaryButton from '@/components/primary-button/primary-button';
 import styles from './styles.module.scss';
-import PrimaryButton from '../../../primary-button/primary-button';
 
 interface Props {
   closeModal: () => void;
@@ -21,29 +22,34 @@ interface Props {
 
 const BookingForm = ({ closeModal }: Props) => {
   const { id: businessId } = useParams<{ id: string }>();
-  const { bookService, success } = useBooking();
+  const { mutateAsync: createBooking } = useCreateBooking();
   const { user } = useAuth();
-
-  useEffect(() => {
-    if (success) {
-      setTimeout(() => {
-        closeModal();
-      }, 1000);
-    }
-  }, [success, closeModal]);
+  const [modalIsClosed, setModalIsClosed] = useState(true);
 
   const handleSubmit = async (values: BookingFormValues) => {
-    if (user) {
-      const bookingData = {
-        businessId: businessId || '',
-        date: values.date,
-        time: values.time,
-        userEmail: user.email,
-        userName: user.name,
-        status: 'pending',
-      };
+    setModalIsClosed(false);
 
-      bookService(bookingData);
+    try {
+      if (user) {
+        const newBooking = {
+          businessId: businessId || '',
+          date: values.date,
+          time: values.time,
+          userEmail: user.email,
+          userName: user.name,
+          status: 'pending',
+        };
+
+        await createBooking(newBooking);
+        closeModal();
+        toast.success('Successfully booked!');
+
+        setTimeout(() => {
+          setModalIsClosed(true);
+        }, 300);
+      }
+    } catch (error) {
+      toast.error('Error, please try later');
     }
   };
 
@@ -56,7 +62,7 @@ const BookingForm = ({ closeModal }: Props) => {
       onSubmit={handleSubmit}
     >
       {({
-        isSubmitting, setFieldValue, values, errors, touched,
+        setFieldValue, values, errors, touched,
       }) => (
         <Form className={styles.form}>
           <button className={styles.closeButton} type='button' onClick={closeModal}>
@@ -91,7 +97,7 @@ const BookingForm = ({ closeModal }: Props) => {
             </div>
             {touched.time && errors.time && <div className={styles.error}>{errors.time}</div>}
           </div>
-          <PrimaryButton type='submit' disabled={isSubmitting}>Book Now</PrimaryButton>
+          <PrimaryButton type='submit' disabled={!modalIsClosed}>Book Now</PrimaryButton>
         </Form>
       )}
     </Formik>

@@ -1,4 +1,4 @@
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 import { FC } from 'react';
 import { ReactSVG } from 'react-svg';
 import CloseIcon from '@/assets/close-icon.svg';
@@ -6,7 +6,7 @@ import WarningIcon from '@/assets/warning-icon.svg';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
 
-ReactModal.setAppElement('#root');
+Modal.setAppElement('body');
 
 interface ModalProps {
   isOpen: boolean;
@@ -21,13 +21,13 @@ const DeleteModal: FC<ModalProps> = ({
   isOpen, onRequestClose, closeModal, onDelete, name, isDeleting,
 }) => {
   return (
-    <ReactModal
+    <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       className={styles.modal}
       overlayClassName={styles.modalOverlay}
       contentLabel='Delete Modal'
-      closeTimeoutMS={500}
+      closeTimeoutMS={300}
     >
       <div className={styles.modalContent}>
         <button className={styles.closeButton} type='button' onClick={closeModal}>
@@ -43,7 +43,7 @@ const DeleteModal: FC<ModalProps> = ({
           <PrimaryButton variant='modalDeleteBtn' onClick={onDelete} disabled={isDeleting}>Delete</PrimaryButton>
         </div>
       </div>
-    </ReactModal>
+    </Modal>
   );
 };
 

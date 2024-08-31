@@ -34,7 +34,7 @@ const UpdateUserForm = () => {
         initialValues={formInitialValues}
         validationSchema={UpdateUserValidationSchema}
         onSubmit={handleSubmit}
-        enableReinitialize={false}
+        enableReinitialize
       >
         {({ isSubmitting, dirty }) => (
           <Form className={styles.form} noValidate>

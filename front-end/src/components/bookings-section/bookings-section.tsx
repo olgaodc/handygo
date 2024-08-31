@@ -100,10 +100,14 @@ const BookingsSection = () => {
                         onDeleteClick={() => openModal(booking.id)}
                       />
                     );
-                  }) : <p className={styles.noBookings}>No bookings match the selected filter.</p>}
+                  }) : (
+                    <p className={styles.noBookings}>No bookings match the selected filter.</p>
+                  )}
                 </div>
               </div>
-            ) : <p className={styles.noBookings}>You haven&apos;t made any bookings yet.</p>}
+            ) : (
+              <p className={styles.noBookings}>You haven&apos;t made any bookings yet.</p>
+            )}
           <DeleteModal
             name='booking'
             isOpen={isModalOpen}

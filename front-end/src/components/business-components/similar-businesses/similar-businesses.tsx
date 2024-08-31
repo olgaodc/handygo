@@ -1,4 +1,4 @@
-import Modal from '@/components/modal/modal';
+import BookingModal from '@/components/booking-modal/booking-modal';
 import PrimaryButton from '@/components/primary-button/primary-button';
 import { FC, useState } from 'react';
 import { ReactSVG } from 'react-svg';
@@ -72,7 +72,7 @@ const SimilarBusinesses: FC<Props> = ({ activeCategory, businessId }) => {
         )}
 
       </div>
-      <Modal
+      <BookingModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         closeModal={closeModal}

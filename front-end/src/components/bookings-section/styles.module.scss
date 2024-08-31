@@ -1,18 +1,10 @@
-.content {
-  min-height: calc(100vh - 300px);
-}
-
 .bookingsWrapper {
   margin: 60px auto 120px;
   max-width: 1100px;
+  min-height: calc(100vh - 400px);
 
   .title {
     font-size: 28px;
-  }
-
-  .noBookings {
-    font-size: 20px;
-    font-weight: 500;
   }
 
   .buttonsWrapper {
@@ -65,6 +57,7 @@
 
 .notLoggedInError {
   margin: 60px auto 0;
+  min-height: calc(100vh - 400px);
   text-align: center;
   font-weight: 500;
   font-size: 20px;

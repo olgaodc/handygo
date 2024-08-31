@@ -1,4 +1,4 @@
-import { USER_BOOKINGS_QUERY_KEY } from '@/api/query-keys';
+import { BOOKINGS_QUERY_KEY } from '@/api/query-keys';
 import ApiService from '@/services/api-service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -11,7 +11,7 @@ const useDeleteBooking = () => {
 
   return useMutation({
     mutationFn: deleteBooking,
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: [USER_BOOKINGS_QUERY_KEY] }),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: [BOOKINGS_QUERY_KEY] }),
   });
 };
 

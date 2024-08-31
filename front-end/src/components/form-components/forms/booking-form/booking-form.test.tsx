@@ -1,15 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import {
+  render, screen,
+} from '@testing-library/react';
 import BookingForm from './booking-form';
 
 jest.mock('@/hooks/use-booking', () => ({
-  __esModule: true,
-  default: () => ({
-    bookService: jest.fn(),
-  }),
+  useCreateBooking: jest.fn(() => ({ mutateAsync: jest.fn() })),
 }));
 
 jest.mock('@/store/use-auth', () => ({
-  __esModule: true,
   default: () => ({
     user: { email: 'test@example.com', name: 'John' },
   }),
@@ -20,48 +18,54 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('<BookingForm />', () => {
+  const closeModal = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('renders the form', () => {
-    render(<BookingForm closeModal={() => {}} />);
+    render(<BookingForm closeModal={closeModal} />);
 
     expect(screen.getByText('Book a Service')).toBeInTheDocument();
     expect(screen.getByText('Select Date')).toBeInTheDocument();
     expect(screen.getByText('Select Time Slot')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Book Now/i })).toBeInTheDocument();
   });
 
   test('renders initial values correctly', () => {
-    render(<BookingForm closeModal={() => {}} />);
+    render(<BookingForm closeModal={closeModal} />);
 
     expect(screen.queryByDisplayValue(/dd-MMM-yyyy/)).toBeNull();
   });
 
-  // TODO: ????
+  // TODO:
   // eslint-disable-next-line jest/no-commented-out-tests
   // test('submits the form with correct values', async () => {
-  //   (useAuth as unknown as jest.Mock).mockReturnValue({
-  //     user: { email: 'test@example.com', name: 'John' },
-  //   });
-  //   (useBooking as jest.Mock).mockReturnValue({
-  //     bookService: mockBookService,
-  //     success: false,
-  //   });
-  //   (useParams as jest.Mock).mockReturnValue({ id: '123' });
+  //   const mockCreateBooking = jest.fn().mockResolvedValue({});
+  //   (useCreateBooking as jest.Mock).mockReturnValue({ mutateAsync: mockCreateBooking });
 
-  //   render(<BookingForm closeModal={() => {}} />);
+  //   render(<BookingForm closeModal={closeModal} />);
 
-  //   fireEvent.change(screen.getByLabelText(/Select Date/i),
-  //  { target: { value: '01-Jan-2024' } });
-  //   fireEvent.click(screen.getByRole('button', { name: /09:00 AM/i }));
+  //   const dateToSelect = screen.getByText('12');
+  //   fireEvent.click(dateToSelect);
+
+  //   const timeButton = screen.getByRole('button', { name: /10:00 AM/i });
+  //   fireEvent.click(timeButton);
+
   //   fireEvent.click(screen.getByRole('button', { name: /Book Now/i }));
 
   //   await waitFor(() => {
-  //     expect(mockBookService).toHaveBeenCalledWith(expect.objectContaining({
+  //     expect(mockCreateBooking).toHaveBeenCalledWith(expect.objectContaining({
   //       businessId: '123',
-  //       date: '01-Jan-2024',
-  //       time: '09:00 AM',
+  //       date: '12-Sep-2024',
+  //       time: '10:00 AM',
   //       userEmail: 'test@example.com',
   //       userName: 'John',
   //       status: 'pending',
   //     }));
   //   });
+
+  //   expect(closeModal).toHaveBeenCalled();
   // });
 });
