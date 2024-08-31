@@ -10,6 +10,10 @@
     background-color: $primary-hover-color;
   }
 
+  &:disabled {
+    opacity: 0.85;
+  }
+
   &.primary {
     border-radius: 8px;
     padding: 16px 24px;
@@ -63,11 +67,6 @@
     &:hover {
       background-color: #C62828;
     }
-
-    &:disabled {
-      opacity: 0.85;
-    }
-
   }
 
   &.cancel {
