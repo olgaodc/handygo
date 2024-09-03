@@ -1,14 +1,14 @@
 .dropdown {
   visibility: hidden;
   position: absolute;
-  top: 5px;
+  top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 130px;
+  gap: 5px;
+  width: 160px;
   background-color: $white-color;
   border-radius: 6px;
-  padding: 15px;
+  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.1490196078) -0.05px 1.95px 12.6px;
   z-index: 10;
   opacity: 0;
@@ -26,11 +26,34 @@
   .dropdownItem {
     text-decoration: none;
     color: $light-black-color;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
+    display: flex;
+    gap: 5px;
+    align-items: center;
     transition: all 0.3s;
+  
+    .icon {
+      height: 18px;
+      width: 18px;
+
+      svg {
+        height: 18px;
+        width: 18px;
+        fill: $light-black-color;
+      }
+    }
 
     &:hover {
-      font-weight: 500;
+      color: $primary-color;
+      background-color: $modal-light-grey;
+
+      .icon {
+        svg {
+          fill: $primary-color;
+        }
+      }
     }
   }
 }
