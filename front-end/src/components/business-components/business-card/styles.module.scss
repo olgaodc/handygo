@@ -9,7 +9,7 @@
 
   @include small {
     height: unset;
-    width: 240px;
+    width: 320px;
   }
 
   &.liked {
@@ -58,10 +58,6 @@
     object-fit: cover;
     border-radius: 20px 20px 0 0;
     display: block;
-
-    @include small {
-      height: 150px;
-    }
   }
 
   .cardInfo {
@@ -70,10 +66,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
-
-    @include small {
-      gap: 10px;
-    }
 
     .category {
       color: $primary-color;
