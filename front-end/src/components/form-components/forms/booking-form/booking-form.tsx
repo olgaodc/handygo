@@ -26,6 +26,8 @@ const BookingForm = ({ closeModal }: Props) => {
   const { user } = useAuth();
   const [modalIsClosed, setModalIsClosed] = useState(true);
 
+  const tomorrow = addDays(new Date(), 1);
+
   const handleSubmit = async (values: BookingFormValues) => {
     setModalIsClosed(false);
 
@@ -52,8 +54,6 @@ const BookingForm = ({ closeModal }: Props) => {
       toast.error('Error, please try later');
     }
   };
-
-  const tomorrow = addDays(new Date(), 1);
 
   return (
     <Formik

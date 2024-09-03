@@ -1,7 +1,7 @@
 :global {
   .react-datepicker {
     background-color: $white-color;
-    border: 1px solid #F3F3F3;
+    border: 1px solid #f3f3f3;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     border-radius: 8px;
@@ -35,7 +35,7 @@
       margin: 0;
     }
 
-    .react-datepicker__day{
+    .react-datepicker__day {
       margin: 2px;
       padding: 8px;
       width: 35px;
@@ -50,9 +50,12 @@
         }
       }
 
-      &.react-datepicker__day--keyboard-selected {        
-        color: $white-color;
-        background-color: $primary-color;
+      &.react-datepicker__day--keyboard-selected {
+        background-color: transparent;
+
+        &:hover {
+          background-color: $modal-light-grey;
+        }
       }
 
       &.react-datepicker__day--outside-month {
@@ -74,10 +77,10 @@
     position: absolute;
     top: 15px;
     right: 15px;
-  
+
     svg {
       height: 20px;
-      width: 20px;    
+      width: 20px;
     }
   }
 
@@ -104,13 +107,12 @@
     .title {
       margin: 25px 0;
     }
-  
+
     .timeSlots {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
       gap: 15px;
-      
-    
+
       .time {
         all: unset;
         padding: 10px 15px;
@@ -122,16 +124,16 @@
         align-items: center;
         transition: all 0.3s;
         cursor: pointer;
-    
+
         &:hover {
-          background-color:$modal-light-grey;
+          background-color: $modal-light-grey;
         }
-    
+
         &.selected {
           background-color: $primary-color;
           color: $white-color;
         }
-      } 
+      }
     }
   }
 
@@ -142,10 +144,6 @@
     margin: 0 0 25px;
   }
 }
-
-
-
-
 
 .error {
   color: $danger-color;

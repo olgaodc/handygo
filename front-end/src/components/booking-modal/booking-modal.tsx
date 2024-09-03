@@ -4,7 +4,7 @@ import { clsx } from 'clsx';
 import styles from './styles.module.scss';
 import BookingForm from '../form-components/forms/booking-form/booking-form';
 
-Modal.setAppElement('body');
+Modal.setAppElement('#root');
 
 interface ModalProps {
   isOpen: boolean;

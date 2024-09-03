@@ -6,7 +6,7 @@ import WarningIcon from '@/assets/warning-icon.svg';
 import PrimaryButton from '../primary-button/primary-button';
 import styles from './styles.module.scss';
 
-Modal.setAppElement('body');
+Modal.setAppElement('#root');
 
 interface ModalProps {
   isOpen: boolean;
